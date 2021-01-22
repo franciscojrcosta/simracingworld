@@ -1,0 +1,46 @@
+
+CREATE TABLE IF NOT EXISTS drivers (
+    driverID INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(254),
+    password VARCHAR(254),
+    firstname VARCHAR(254),
+    middlename VARCHAR(254),
+    lastname VARCHAR(254),
+    nationality VARCHAR(2),
+    flag VARCHAR(254),
+    lastlogin DATE,
+    birthdate DATE,
+    photo VARCHAR(254),
+    simulators VARCHAR(254),
+    bankroll DECIMAL(11,2),
+    skill INT,
+    attacking INT,
+    defending INT,
+    reliability INT,
+    teamplayer INT,
+    fairplay INT,
+    knowledge INT,
+    evalcounter INT,
+    active BOOLEAN,
+    UNIQUE KEY (email),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS teams (
+    teamID INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(254),
+    password VARCHAR(254),
+    teamname VARCHAR(254),
+    managername VARCHAR(254),
+    nationality VARCHAR(2),
+    flag VARCHAR(254),
+    lastlogin DATE,
+    logo VARCHAR(254),
+    website VARCHAR(254),
+    facebook VARCHAR(254),
+    youtube VARCHAR(254),
+    twitch VARCHAR(254),
+    bankroll DECIMAL(11,2),
+    active BOOLEAN,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

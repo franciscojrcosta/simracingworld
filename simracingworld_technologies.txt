@@ -1,0 +1,14 @@
+PHP FRAMEWORK
+Fat-Free Framework  v.3.7
+https://fatfreeframework.com/
+
+DATABASE
+MySQL 8.0
+https://dev.mysql.com/
+
+CSS FRAMEWORK
+Bootstrap v.5.0
+https://getbootstrap.com/
+
+FontAwesome Icons 5
+https://fontawesome.com/

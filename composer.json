@@ -1,0 +1,13 @@
+{
+    "name": "vendor/sim-racing-world",
+    "description": "Description of project SimRacingWorld.",
+    "authors": [
+        {
+            "name": "franc",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "bcosca/fatfree-core": "^3.7"
+    }
+}
