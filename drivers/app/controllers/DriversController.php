@@ -2,32 +2,14 @@
 
 /**
  * 
- */
+ */ 
 
 class DriversController extends Controller {
     
-    protected $driverID;
-    protected $email;
-    password VARCHAR(254),
-    firstname VARCHAR(254),
-    middlename VARCHAR(254),
-    lastname VARCHAR(254),
-    nationality VARCHAR(2),
-    flag VARCHAR(254),
-    lastlogin DATE,
-    birthdate DATE,
-    photo VARCHAR(254),
-    simulators VARCHAR(254),
-    bankroll DECIMAL(11,2),
-    skill INT,
-    attacking INT,
-    defending INT,
-    reliability INT,
-    teamplayer INT,
-    fairplay INT,
-    knowledge INT,
-    evalcounter INT,
-    active BOOLEAN,
+    protected $driverID, $email, $password, $firstname, $middlename, $lastname,
+            $nationality, $flag, $lastlogin, $birthdate, $photo, $simulators,
+            $bakroll, $skill, $attacking, $defending, $reliability, $teamplayer,
+            $fairplay, $knowledge, $evalcounter, $active;
 
     function render($f3) {
        $template = new Template;
