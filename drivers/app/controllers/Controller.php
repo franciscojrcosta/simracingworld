@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author Francisco Costa <zoom.franciscocosta@gmail.com>
+ * 
+ */
 
 class Controller {
 
@@ -6,7 +10,7 @@ class Controller {
     protected $db;
     protected $template;
 
-    function __construct() {
+    public function __construct() {
         $f3 = Base::instance();
         $this->f3 = $f3;
         $this->template = new Template();
@@ -18,11 +22,11 @@ class Controller {
         $this->db=$db;
     }
 
-    function beforeroute() {
+    public function beforeroute() {
         //echo 'Before routing - ';
     }
 
-    function afterroute() {
+    public function afterroute() {
         //echo '- After routing';
     }
 

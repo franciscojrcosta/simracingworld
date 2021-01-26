@@ -6,6 +6,12 @@ class Drivers extends DB\SQL\Mapper{
         parent::__construct($db, 'drivers');
     }
     
+    private function insertDriver(){
+        
+    }
+    
+    
+
     public function getByID($id){
         $this->load(array('driverid=?',$id));
         return $this->query;
