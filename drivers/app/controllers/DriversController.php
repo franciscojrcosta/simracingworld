@@ -14,11 +14,5 @@ class DriversController extends Controller {
     public function registerDriver(){
         
     }
-    
-            
-    function render($f3) {
-       $template = new Template;
-       echo $template->render('login.html');
-    }
 
 }
