@@ -24,7 +24,15 @@ class Controller {
     protected $db; //! database instance
     protected $template; //! template instance
 
+    /**
+     * Initialize the framework f3 object
+     * Initialize Template object
+     * Initialize db object MySQL database
+     */
     public function __construct() {
+        $f3 = Base::instance();
+        $this->f3 = $f3;
+        $this->template = new Template;
         $this->connectMySQL();
     }
 
@@ -33,14 +41,13 @@ class Controller {
      * @return $db object
      */
     public function connectMySQL() {
-        $f3 = Base::instance();
-        $this->f3 = $f3;
-        $this->template = new Template();
-
         $db = new DB\SQL(
-                'mysql:host=localhost;port=3306;dbname=simracingworld',
-                'root',
-                'Redbaron');
+                $this->f3->get('SYSDB'),
+                $this->f3->get('DBUSERNAME'),
+                $this->f3->get('DBPASSWORD'));
+        //'mysql:host=localhost;port=3306;dbname=simracingworld',
+        //'root',
+        //'Redbaron');
         $this->db = $db;
     }
 

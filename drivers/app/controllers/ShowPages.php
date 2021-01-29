@@ -3,9 +3,8 @@
 /**
  * a Class that renders pages
  */
-
 class ShowPages extends Controller {
-    
+
     function showNav() {
         echo $this->template->render('navigation.html');
     }
@@ -16,6 +15,10 @@ class ShowPages extends Controller {
 
     function showDashboard() {
         echo $this->template->render('dashboard.html');
+    }
+
+    function showLogin() {
+        echo $this->template->render('login.html');
     }
 
 }
