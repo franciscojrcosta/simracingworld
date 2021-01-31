@@ -1,17 +1,17 @@
 
 CREATE TABLE IF NOT EXISTS drivers (
     driverID INT NOT NULL AUTO_INCREMENT,
-    email VARCHAR(254),
-    password VARCHAR(254),
-    firstname VARCHAR(254),
-    middlename VARCHAR(254),
-    lastname VARCHAR(254),
+    email VARCHAR(255),
+    password VARCHAR(255),
+    firstname VARCHAR(255),
+    middlename VARCHAR(255),
+    lastname VARCHAR(255),
     nationality VARCHAR(2),
-    flag VARCHAR(254),
+    flag VARCHAR(255),
     lastlogin DATE,
     birthdate DATE,
-    photo VARCHAR(254),
-    simulators VARCHAR(254),
+    photo VARCHAR(255),
+    simulators VARCHAR(255),
     bankroll DECIMAL(11,2),
     skill INT,
     attacking INT,
@@ -21,9 +21,10 @@ CREATE TABLE IF NOT EXISTS drivers (
     fairplay INT,
     knowledge INT,
     evalcounter INT,
+    activationkey VARCHAR(32),
     active BOOLEAN,
     UNIQUE KEY (email),
-    PRIMARY KEY (id)
+    PRIMARY KEY (driverID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS teams (

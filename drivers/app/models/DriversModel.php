@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class Drivers extends DB\SQL\Mapper{
+class DriversModel extends DB\SQL\Mapper{
 
     public function __construct(\DB\SQL $db) {
         parent::__construct($db, 'drivers');
