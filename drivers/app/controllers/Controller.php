@@ -42,12 +42,9 @@ class Controller {
      */
     public function connectMySQL() {
         $db = new DB\SQL(
-                $this->f3->get('SYSDB'),
-                $this->f3->get('DBUSERNAME'),
-                $this->f3->get('DBPASSWORD'));
-        //'mysql:host=localhost;port=3306;dbname=simracingworld',
-        //'root',
-        //'Redbaron');
+                $this->f3->get('SYSDB'), //key SYSDB is at config.ini
+                $this->f3->get('DBUSERNAME'), //key DBUSERNAME is at config.ini
+                $this->f3->get('DBPASSWORD')); //key DBPASSWORD is at config.ini
         $this->db = $db;
     }
 

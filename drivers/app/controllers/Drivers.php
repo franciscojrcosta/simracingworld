@@ -17,15 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+class Drivers extends Controller {
 
-class DriversController extends Controller {
+    protected $driverdata = array();
     
-    protected $driverID, $email, $password, $firstname, $middlename, $lastname,
-            $nationality, $flag, $lastlogin, $birthdate, $photo, $simulators,
-            $bakroll, $skill, $attacking, $defending, $reliability, $teamplayer,
-            $fairplay, $knowledge, $evalcounter, $active;
-
-    public function registerDriver(){
+    private function changePassword(){
         
     }
 
