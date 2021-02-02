@@ -20,7 +20,7 @@
 /**
  * Driver will be registered at the app
  */
-class Registration extends Controller {
+class DriversRegistration extends Controller {
 
     private $driverdata;
     private $activationid;

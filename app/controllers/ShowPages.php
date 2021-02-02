@@ -17,12 +17,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class Drivers extends Controller {
-
-    protected $driverdata = array();
-    
-    private function changePassword(){
+/**
+ * a Class that renders pages
+ */
+class ShowPages extends Controller {
         
+    function showMain(){
+        echo $this->template->render('main.html');
+    }
+
+    function showNav() {
+        echo $this->template->render('navigation.html');
+    }
+
+    function driverSignup() {
+        echo $this->template->render('dsignup.html');
+    }
+
+    function driverDashboard() {
+        echo $this->template->render('ddashboard.html');
+    }
+
+    function driverLogin() {
+        echo $this->template->render('dlogin.html');
     }
 
 }

@@ -17,25 +17,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * a Class that renders pages
- */
-class ShowPages extends Controller {
+require_once("vendor/autoload.php");
 
-    function showNav() {
-        echo $this->template->render('navigation.html');
-    }
+$f3 = \Base::instance();
 
-    function showSignup() {
-        echo $this->template->render('signup.html');
-    }
+$f3->set('APPNAME', 'SimRacingWorld');
+$f3->set('APPVERSION','1.0');
+$f3->set('AUTHOR','Francisco Costa');
 
-    function showDashboard() {
-        echo $this->template->render('dashboard.html');
-    }
+$f3->set('LOCALES', 'dict/'); //defining where dictionaire files are
+//$f3->set('LANGUAGE','en'); //defining default language, if not set than browser lang is used
+$f3->set('FALLBACK','en');  //defining the default language when the browser language is not found
 
-    function showLogin() {
-        echo $this->template->render('login.html');
-    }
+$f3->config('config.ini');
+$f3->config('routes.ini');
 
-}
+$f3->run();
