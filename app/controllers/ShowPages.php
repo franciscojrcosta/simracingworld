@@ -21,7 +21,7 @@
  * a Class that renders pages
  */
 class ShowPages extends Controller {
-        
+    
     function showMain(){
         echo $this->template->render('main.html');
     }
