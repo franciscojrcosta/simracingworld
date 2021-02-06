@@ -20,12 +20,11 @@
 class Views {
 
     protected $pagetorender;
-
+    
     function __construct() {
         $f3 = Base::instance();
         $this->f3 = $f3;
         $this->template = new Template;
-        $pagetorender = 'main';
     }
 
     public function beforeroute() {
@@ -37,11 +36,13 @@ class Views {
     }
 
     /**
-     * Render the page at the parameter after /view/
+     * Render the page
      */
     public function viewPage() {
         $this->pagetorender = $this->f3->get('PARAMS.page');
         echo $this->template->render($this->pagetorender . '.html');
     }
+
+
 
 }
