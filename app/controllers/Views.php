@@ -19,8 +19,10 @@
 
 class Views {
 
+    protected $section;
+    protected $page;
     protected $pagetorender;
-    
+
     function __construct() {
         $f3 = Base::instance();
         $this->f3 = $f3;
@@ -35,14 +37,18 @@ class Views {
         //echo '- After routing';
     }
 
+    public function viewMain() {
+        echo $this->template->render('main.html');
+    }
+
     /**
      * Render the page
      */
     public function viewPage() {
-        $this->pagetorender = $this->f3->get('PARAMS.page');
+        $this->section = $this->f3->get('PARAMS.section');
+        $this->page = $this->f3->get('PARAMS.page');
+        $this->pagetorender = $this->section .'/'. $this->page;
         echo $this->template->render($this->pagetorender . '.html');
     }
-
-
 
 }

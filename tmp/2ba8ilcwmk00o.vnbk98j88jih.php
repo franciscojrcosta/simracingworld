@@ -30,8 +30,8 @@
                                                 <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
                                             </div>             
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="btn btn-info" href="driversignup"><?= ($signup) ?></a>
-                                                <a class="btn btn-primary" href="driverlogin"><?= ($login) ?></a>
+                                                <a class="btn btn-info" href="dsignup"><?= ($signup) ?></a>
+                                                <a class="btn btn-primary" href="dlogin"><?= ($login) ?></a>
                                             </div>
                                         </form>
                                     </div>

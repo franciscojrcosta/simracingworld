@@ -1,6 +1,6 @@
 
-CREATE TABLE IF NOT EXISTS drivers (
-    driverID INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS racers (
+    racerID INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(255),
     password VARCHAR(255),
     firstname VARCHAR(255),
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS drivers (
     activationkey VARCHAR(32),
     active BOOLEAN,
     UNIQUE KEY (email),
-    PRIMARY KEY (driverID)
+    PRIMARY KEY (racerID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS teams (

@@ -18,28 +18,15 @@
  */
 
 /**
- * a Class that renders pages
+ * Description of Racers
+ *
+ * @author franc
  */
-class ShowPages extends Controller {
-    
-    function showMain(){
-        echo $this->template->render('main.html');
-    }
 
-    function showNav() {
-        echo $this->template->render('navigation.html');
-    }
+class Racers {
 
-    function driverSignup() {
-        echo $this->template->render('dsignup.html');
-    }
-
-    function driverDashboard() {
-        echo $this->template->render('ddashboard.html');
-    }
-
-    function driverLogin() {
-        echo $this->template->render('dlogin.html');
+    public function login() {
+        echo 'teste de login';
     }
 
 }

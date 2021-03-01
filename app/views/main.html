@@ -77,10 +77,8 @@
                             Driver or Team Manager.<br/>
                             You can even be both a Driver and Team Manager.
                         </p>
-                        <p>
-                            <a href="driverlogin" class="btn btn-primary my-2">Drivers</a>
-                            <a href="teamslogin" class="btn btn-primary my-2">Managers</a>
-                        </p>
+                        <a  href="/views/racers/login"><button type="submit" class="btn btn-primary my-2">Drivers</button></a>
+                        <a  href="/views/teams/login"><button type="submit" class="btn btn-primary my-2">Teams</button></a>
                     </div>
                 </div>
             </section>
