@@ -17,23 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Description of Racers
- *
- * @author franc
- */
-
-class Racers extends Controller {
-
-    public function login() {
-        echo 'teste de login';
+class RacersLogin extends Model {
+    
+    public function initRacersLogin(){
+        
     }
     
-    public function register(){
-        $racerregistration = new RacersSignup($this->db);
-        $racerregistration->initSignup();
-        echo $this->template->render('main.html');
+    private function checkPassword(){
+        
     }
-
-
+    
 }
