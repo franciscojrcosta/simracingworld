@@ -23,7 +23,7 @@ class Controller {
     protected $f3; //! framework instance
     protected $db; //! database instance
     protected $template; //! template instance
-
+    
     /**
      * Initialize the framework f3 object
      * Initialize Template object
@@ -40,14 +40,14 @@ class Controller {
      * Connects to MySQL dabtabase
      * @return $db object
      */
-    public function connectMySQL() {
+    protected function connectMySQL() {
         $db = new DB\SQL(
                 $this->f3->get('SYSDB'), //key SYSDB is at config.ini
                 $this->f3->get('DBUSERNAME'), //key DBUSERNAME is at config.ini
                 $this->f3->get('DBPASSWORD')); //key DBPASSWORD is at config.ini
         $this->db = $db;
     }
-
+        
     public function beforeroute() {
         //echo 'Before routing - ';
     }

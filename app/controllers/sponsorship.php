@@ -18,25 +18,10 @@
  */
 
 /**
- * Description of Racers
+ * Description of SponsorContract
  *
  * @author franc
  */
-
-class Racers extends Controller {
-
-    public function login() {
-        echo 'teste de login';
-    }
-    
-    public function register(){
-        $racerregistration = new RacersSignup($this->db);
-        $racerregistration->initSignup();
-        echo $this->template->render('main.html');
-    }
-    
-    public function signcontract(){
-        
-    }
-
+class Sponsorship {
+    //put your code here
 }

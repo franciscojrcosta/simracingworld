@@ -23,7 +23,7 @@ class Views {
     protected $page;
     protected $pagetorender;
 
-    function __construct() {
+    public function __construct() {
         $f3 = Base::instance();
         $this->f3 = $f3;
         $this->template = new Template;
@@ -47,7 +47,7 @@ class Views {
     public function viewPage() {
         $this->section = $this->f3->get('PARAMS.section');
         $this->page = $this->f3->get('PARAMS.page');
-        $this->pagetorender = $this->section .'/'. $this->page;
+        $this->pagetorender = $this->section . '/' . $this->page;
         echo $this->template->render($this->pagetorender . '.html');
     }
 

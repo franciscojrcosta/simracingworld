@@ -37,14 +37,14 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">{{@signup}}</h3></div>
                                     <div class="card-body">
-                                        <form id="registrationform" name="registration_form" action="register" method="POST" enctype="multipart/form-data">
+                                        <form id="registrationform" name="registration_form" action="/racers/register" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmail">{{@email}}</label>
-                                                <input class="form-control py-4" id="inputEmail" name="txtemail" type="email" required placeholder="Enter email address" />
+                                                <input class="form-control py-4" id="inputEmail" name="email" type="email" required placeholder="Enter email address" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">{{@password}}</label>
-                                                <input class="form-control py-4" id="inputPassword" name="txtpassword" type="password" required placeholder="Enter password" />
+                                                <input class="form-control py-4" id="inputPassword" name="password" type="password" required placeholder="Enter password" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputConfirmPassword">{{@confirmpassword}}</label>
@@ -52,23 +52,23 @@
                                             </div> 
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputFirstName">{{@firstname}}</label>
-                                                <input class="form-control py-4" id="inputFirstName" name="txtfirstname" required />
+                                                <input class="form-control py-4" id="inputFirstName" name="firstname" required />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputMiddleName">{{@middlename}}</label>
-                                                <input class="form-control py-4" id="inputMiddleName" name="txtmiddlename" />
+                                                <input class="form-control py-4" id="inputMiddleName" name="middlename" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputLastName">{{@lastname}}</label>
-                                                <input class="form-control py-4" id="inputLastName" name="txtlastname" required/>
+                                                <input class="form-control py-4" id="inputLastName" name="lastname" required/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputBirthDate">{{@birthdate}}</label>
-                                                <input class="form-control py-4" id="inputBirthDate" name="txtbirthdate" type="date" />
+                                                <input class="form-control py-4" id="inputBirthDate" name="birthdate" type="date" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputNationality">{{@nationality}}</label>
-                                                <select class="form-control py-4" id="inputNationality" name="txtnationality">
+                                                <select class="form-control py-4" id="inputNationality" name="nationality">
                                                     <option value="AF">Afghanistan</option>
                                                     <option value="AX">Åland Islands</option>
                                                     <option value="AL">Albania</option>

@@ -18,25 +18,37 @@
  */
 
 /**
- * Description of Racers
+ * Description of auth
  *
  * @author franc
  */
 
-class Racers extends Controller {
+class SRW_PassEnc {
+    
+    public $activationkey;
+    public $hashedpassword;
+    
+    /**
+     * Generates the unique id for the activation key
+     * @return string Sactivationkey
+     */
+    function genActivationKey() {
+        $this->activationkey = uniqid();
+        return $this->activationkey;
+    }
 
-    public function login() {
-        echo 'teste de login';
-    }
-    
-    public function register(){
-        $racerregistration = new RacersSignup($this->db);
-        $racerregistration->initSignup();
-        echo $this->template->render('main.html');
-    }
-    
-    public function signcontract(){
+    function checkActivationKey() {
         
+    }
+    
+    /**
+     * Encrypts a given password
+     * @param string $password original password to be encrypted
+     * @return string $hashedpassword password after encryption
+     */
+    function encryptPassword($password){
+       $this->hashedpassword = password_hash($password, PASSWORD_DEFAULT);
+       return $this->hashedpassword;
     }
 
 }

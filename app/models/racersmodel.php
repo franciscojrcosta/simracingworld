@@ -18,25 +18,38 @@
  */
 
 /**
- * Description of Racers
+ * Description of RacersModel
  *
  * @author franc
  */
 
-class Racers extends Controller {
+class RacersModel extends Model {
+            
+    public function __construct(\DB\SQL $db) {
+        parent::__construct($db, 'racers');
+    }
+    
+    
+    protected function create() {
 
-    public function login() {
-        echo 'teste de login';
     }
-    
-    public function register(){
-        $racerregistration = new RacersSignup($this->db);
-        $racerregistration->initSignup();
-        echo $this->template->render('main.html');
-    }
-    
-    public function signcontract(){
+
+    protected function read() {
         
+    }
+    
+    protected function update(){
+        
+    }
+
+    protected function delete() {
+        
+    }
+
+    protected function getByField($id) {
+        $this->load(array('RacerId=?', $id));
+        print_r($this->query);
+        return $this->query;
     }
 
 }

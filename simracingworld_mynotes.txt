@@ -3,3 +3,7 @@ You use:
 - private - scope when you want your property/method to be visible in its own class only.
 - protected - scope when you want to make your property/method visible in all classes that extend current class including the parent class.
 If you don't use any visibility modifier, the property / method will be public.
+
+
+index.php
+ - remover o código referente ao error repoting antes de publicar

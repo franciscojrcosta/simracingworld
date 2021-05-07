@@ -58,7 +58,7 @@
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container">
                     <a href="#" class="navbar-brand d-flex align-items-center">
-                        <img src="<?= ($BASE) ?>styles/logo.png" width="180" alt="SimRacingWorld">
+                        <img src="styles/logo.png" width="180" alt="SimRacingWorld">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@
 
         <main>
             <section class="py-5 text-center container" >
-                <div class="row py-lg-5" style='background-image: url("<?= ($BASE) ?>styles/background.jpg"); background-repeat: no-repeat; background-position: bottom; background-size: cover'>
+                <div class="row py-lg-5" style="background-image: url('styles/background.jpg'); background-repeat: no-repeat; background-position: bottom; background-size: cover">
                     <div class="col-lg-6 col-md-8 mx-auto">
                         <h1 class="fw-light text-light">Get to the  action!</h1>
                         <p class="lead text-light">

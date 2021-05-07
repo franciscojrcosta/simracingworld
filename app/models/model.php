@@ -18,25 +18,17 @@
  */
 
 /**
- * Description of Racers
+ * Description of Model
  *
  * @author franc
  */
-
-class Racers extends Controller {
-
-    public function login() {
-        echo 'teste de login';
-    }
+class Model extends DB\SQL\Mapper {
     
-    public function register(){
-        $racerregistration = new RacersSignup($this->db);
-        $racerregistration->initSignup();
-        echo $this->template->render('main.html');
-    }
+    protected $mysqldb;
     
-    public function signcontract(){
-        
+    public function __construct(\DB\SQL $db, $table, $fields = NULL, $ttl = 60) {
+        parent::__construct($db, $table, $fields, $ttl);
     }
-
+     
+   
 }

@@ -19,6 +19,13 @@
 
 require_once("vendor/autoload.php");
 
+//error reporting remove when lauching app
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+ini_set('html_errors', false);
+
+date_default_timezone_set('UTC');
+
 $f3 = \Base::instance();
 
 $f3->set('APPNAME', 'SimRacingWorld');
