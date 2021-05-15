@@ -30,7 +30,7 @@ class Racers extends Controller {
     }
     
     public function register(){
-        $racerregistration = new RacersSignup($this->db);
+        $racerregistration = new RacersSignup();
         $racerregistration->initSignup();
         echo $this->template->render('main.html');
     }

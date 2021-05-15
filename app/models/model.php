@@ -22,13 +22,23 @@
  *
  * @author franc
  */
-class Model extends DB\SQL\Mapper {
-    
-    protected $mysqldb;
-    
-    public function __construct(\DB\SQL $db, $table, $fields = NULL, $ttl = 60) {
-        parent::__construct($db, $table, $fields, $ttl);
+class Model {
+
+    protected $fatfree;     //! Framework Instance
+    protected $srwdatabase; //! Database Instance
+
+    public function __construct() {
+        $f3 = Base::instance();
+        $this->fatfree = $f3;
+        $this->connectMySQL();
     }
-     
-   
+
+    protected function connectMySQL() {
+        $srwdatabase = new DB\SQL(
+                $this->fatfree->get('SYSDB'), //key SYSDB is at config.ini
+                $this->fatfree->get('DBUSERNAME'), //key DBUSERNAME is at config.ini
+                $this->fatfree->get('DBPASSWORD')); //key DBPASSWORD is at config.ini
+        $this->srwdatabase = $srwdatabase;
+    }
+
 }

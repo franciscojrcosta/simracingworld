@@ -22,23 +22,32 @@
  *
  * @author franc
  */
-
 class RacersModel extends Model {
-            
-    public function __construct(\DB\SQL $db) {
-        parent::__construct($db, 'racers');
+
+    protected $racersdata; //! Database object for table racers
+
+    public function __construct() {
+        parent::__construct();
+        $this->mapRacers();
     }
     
-    
-    protected function create() {
+    /**
+     * Maps database table racers to object racersdata
+     */
+    protected function mapRacers() {
+        $racersdata = new DB\SQL\Mapper($this->srwdatabase, 'racers');
+        $this->racersdata = $racersdata;
+    }
 
+    protected function create() {
+        
     }
 
     protected function read() {
         
     }
-    
-    protected function update(){
+
+    protected function update() {
         
     }
 

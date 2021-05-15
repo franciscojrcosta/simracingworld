@@ -22,7 +22,7 @@
  *
  * @author franc
  */
-class RacersSignup extends Model {
+class RacersSignup extends RacersModel {
     
     private $email;
     private $password;
@@ -35,10 +35,6 @@ class RacersSignup extends Model {
     private $flag;
     private $activationkey;
     private $active;
-    
-    public function __construct(\DB\SQL $db) {
-        parent::__construct($db, 'racers');
-    }
     
     public function initSignup(){
         $this->initRacerData();
@@ -62,14 +58,17 @@ class RacersSignup extends Model {
     }
     
     protected function register() {
-        $myquery = 'INSERT INTO racers (email, password, firstname,'
-                . 'middlename, lastname, birthdate, registrationdate, nationality,'
-                . 'flag, activationkey) VALUES'
-                . '("'.$this->email.'","'.$this->password.'","'.$this->firstname
-                . '","'.$this->middlename.'","'.$this->lastname.'","'.$this->birthdate
-                . '","'.$this->registrationdate.'","'.$this->nationality.'","'.$this->flag
-                . '","'.$this->activationkey.'")';  
-        $this->db->exec($myquery);
+        $this->racersdata->email        = $this->email;
+        $this->racersdata->password     = $this->password;
+        $this->racersdata->firstname    = $this->firstname;
+        $this->racersdata->middlename   = $this->middlename;
+        $this->racersdata->lastname     = $this->lastname;
+        $this->racersdata->birthdate    = $this->birthdate;
+        $this->racersdata->registrationdate = $this->registrationdate;
+        $this->racersdata->nationality  = $this->nationality;
+        $this->racersdata->flag         = $this->flag;
+        $this->racersdata->activationkey= $this->activationkey;
+        $this->racersdata->save();
     }
     
 }
