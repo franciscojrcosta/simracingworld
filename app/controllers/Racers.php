@@ -24,14 +24,20 @@
  */
 
 class Racers extends Controller {
-
+    
+    protected $racersmodel; //!object Racers Model
+    
+    public function __construct() {
+        parent::__construct();
+        $this->racersmodel = new RacersModel();
+    }
+    
     public function login() {
-        echo 'teste de login';
+        $this->racersmodel->loginRacers();
     }
     
     public function register(){
-        $racerregistration = new RacersSignup();
-        $racerregistration->initSignup();
+        $this->racersmodel->signupRacers();
         echo $this->template->render('main.html');
     }
 

@@ -23,19 +23,7 @@
  * @author franc
  */
 class RacersSignup extends RacersModel {
-    
-    private $email;
-    private $password;
-    private $firstname;
-    private $middlename;
-    private $lastname;
-    private $birthdate;
-    private $registrationdate;
-    private $nationality;
-    private $flag;
-    private $activationkey;
-    private $active;
-    
+       
     public function initSignup(){
         $this->initRacerData();
         $this->register();     
@@ -68,7 +56,8 @@ class RacersSignup extends RacersModel {
         $this->racersdata->nationality  = $this->nationality;
         $this->racersdata->flag         = $this->flag;
         $this->racersdata->activationkey= $this->activationkey;
-        $this->racersdata->save();
+        $this->racersdata->save(); //saves all the data to db
+        $this->racersdata->reset(); //clean up the stored variables and prepares for new data
     }
     
 }
