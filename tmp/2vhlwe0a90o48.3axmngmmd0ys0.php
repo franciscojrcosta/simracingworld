@@ -59,7 +59,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </div>
         
         <!-- MAIN -->
-        <div>TODO write content</div>
+        <div class="container">
+            TODO write content
+        </div>
         <div><p><?= ($session) ?></p></div>
         
         <!-- FOOTER -->
