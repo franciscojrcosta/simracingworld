@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>SimRacingWorld</title>
 
-        <!-- Required meta tags -->
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The SimRacing Management">
+        <meta name="author" content="Francisco Costa">
+        <meta name="application-name" content="SimRacingWorld">
+        <title>SimRacingWorld</title>
 
+        <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
         <link href="<?= ($BASE) ?>/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="<?= ($BASE) ?>/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
-        <script type="text/javascript">
-        
-        function Validate() {
-            var password = document.getElementById("inputPassword").value;
-            var confirmPassword = document.getElementById("inputConfirmPassword").value;
-            if (password != confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
+        <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+        <link href="/styles/fontawesome/css/fontawesome.css" rel="stylesheet">
+        <link href="/styles/fontawesome/css/brands.css" rel="stylesheet">
+        <link href="/styles/fontawesome/css/solid.css" rel="stylesheet">
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
             }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+
+        <script type="text/javascript">
+            function Validate() {
+                var password = document.getElementById("inputPassword").value;
+                var confirmPassword = document.getElementById("inputConfirmPassword").value;
+                if (password != confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
             return true;
-        }
-        
+            }
         </script>
 
     </head>

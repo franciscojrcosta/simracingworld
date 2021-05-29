@@ -1,6 +1,6 @@
 <?php
 
-/*
+/* 
  * Copyright (C) 2021 SimRacingWorld by Francisco Costa
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,11 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Description of SponsorContract
- *
- * @author franc
- */
-class Sponsorship {
-    //put your code here
-}
+$racerdata = new RacersModel();
+
+?>

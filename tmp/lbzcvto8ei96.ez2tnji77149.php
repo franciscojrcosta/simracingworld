@@ -3,15 +3,20 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-        <meta name="generator" content="Hugo 0.79.0">
+        <meta name="description" content="The SimRacing Management">
+        <meta name="author" content="Francisco Costa">
+        <meta name="application-name" content="SimRacingWorld">
         <title>SimRacingWorld</title>
 
         <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
         <link href="<?= ($BASE) ?>/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="<?= ($BASE) ?>/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+        <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+        <link href="/styles/fontawesome/css/fontawesome.css" rel="stylesheet">
+        <link href="/styles/fontawesome/css/brands.css" rel="stylesheet">
+        <link href="/styles/fontawesome/css/solid.css" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {

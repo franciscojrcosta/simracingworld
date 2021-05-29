@@ -18,29 +18,16 @@
  */
 
 /**
- * Description of Model
+ * Description of SponsorContract
  *
  * @author franc
  */
-class Model {
-
-    protected $f3;          //! Framework Instance
-    protected $srwdatabase; //! Database Instance
-    protected $template;    //! Template Instance
-
+class Sponsors extends Controller {
+    
     public function __construct() {
-        $f3 = Base::instance();
-        $this->f3 = $f3;
-        $this->template = new Template();
-        $this->connectMySQL();
+        parent::__construct();
     }
-
-    protected function connectMySQL() {
-        $srwdatabase = new DB\SQL(
-                $this->f3->get('SYSDB'), //key SYSDB is at config.ini
-                $this->f3->get('DBUSERNAME'), //key DBUSERNAME is at config.ini
-                $this->f3->get('DBPASSWORD')); //key DBPASSWORD is at config.ini
-        $this->srwdatabase = $srwdatabase;
-    }
-
+    
+    
+    
 }

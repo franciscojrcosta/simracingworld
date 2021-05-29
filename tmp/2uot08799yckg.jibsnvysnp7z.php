@@ -11,8 +11,8 @@
 
         <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
-        <link href="{{@BASE}}/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="{{@BASE}}/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <link href="<?= ($BASE) ?>/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="<?= ($BASE) ?>/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
         <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
         <link href="/styles/fontawesome/css/fontawesome.css" rel="stylesheet">
@@ -57,39 +57,39 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">{{@signup}}</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><?= ($signup) ?></h3></div>
                                     <div class="card-body">
                                         <form id="registrationform" name="registration_form" action="/racers/register" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmail">{{@email}}</label>
+                                                <label class="small mb-1" for="inputEmail"><?= ($email) ?></label>
                                                 <input class="form-control py-4" id="inputEmail" name="email" type="email" required placeholder="Enter email address" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">{{@password}}</label>
+                                                <label class="small mb-1" for="inputPassword"><?= ($password) ?></label>
                                                 <input class="form-control py-4" id="inputPassword" name="password" type="password" required placeholder="Enter password" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputConfirmPassword">{{@confirmpassword}}</label>
+                                                <label class="small mb-1" for="inputConfirmPassword"><?= ($confirmpassword) ?></label>
                                                 <input class="form-control py-4" id="inputConfirmPassword" type="password" required placeholder="Repeat password" />
                                             </div> 
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputFirstName">{{@firstname}}</label>
+                                                <label class="small mb-1" for="inputFirstName"><?= ($firstname) ?></label>
                                                 <input class="form-control py-4" id="inputFirstName" name="firstname" required />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputMiddleName">{{@middlename}}</label>
+                                                <label class="small mb-1" for="inputMiddleName"><?= ($middlename) ?></label>
                                                 <input class="form-control py-4" id="inputMiddleName" name="middlename" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputLastName">{{@lastname}}</label>
+                                                <label class="small mb-1" for="inputLastName"><?= ($lastname) ?></label>
                                                 <input class="form-control py-4" id="inputLastName" name="lastname" required/>
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputBirthDate">{{@birthdate}}</label>
+                                                <label class="small mb-1" for="inputBirthDate"><?= ($birthdate) ?></label>
                                                 <input class="form-control py-4" id="inputBirthDate" name="birthdate" type="date" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputNationality">{{@nationality}}</label>
+                                                <label class="small mb-1" for="inputNationality"><?= ($nationality) ?></label>
                                                 <select class="form-control py-4" id="inputNationality" name="nationality">
                                                     <option value="AF">Afghanistan</option>
                                                     <option value="AX">Åland Islands</option>
@@ -343,7 +343,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button type="submit" class="btn btn-primary" onclick="return Validate()">{{@save}}</button>
+                                                <button type="submit" class="btn btn-primary" onclick="return Validate()"><?= ($save) ?></button>
                                             </div>
                                         </form>
                                     </div>
@@ -360,9 +360,9 @@
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Sim Racing World</div>
                             <div>
-                                <a href="#">{{@privacy}}</a>
+                                <a href="#"><?= ($privacy) ?></a>
                                 &middot;
-                                <a href="#">{{@termsconditions}}</a>
+                                <a href="#"><?= ($termsconditions) ?></a>
                             </div>
                         </div>
                     </div>

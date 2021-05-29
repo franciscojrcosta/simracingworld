@@ -36,7 +36,8 @@ class RacersModel extends Model {
     protected $flag;
     protected $activationkey;
     protected $active;
-
+    protected $racerssession;
+            
     public function __construct() {
         parent::__construct();
         $this->mapRacers();
@@ -61,6 +62,7 @@ class RacersModel extends Model {
         $this->racersdata->load(array('email=?', $this->email));
         if ($this->racersdata->dry()) {
             echo 'No user was found';
+            return;
         } else {
             $passcheck = password_verify($this->password, $this->racersdata->password);
         }
@@ -68,7 +70,9 @@ class RacersModel extends Model {
             echo 'password errada';
         }
         if ($passcheck == true) {
-            echo 'password correta';
+            session_start();
+            $this->f3->set('session', session_id());
+            echo $this->template->render('racers/main.html');
         }
     }
 
