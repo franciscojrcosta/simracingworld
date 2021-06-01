@@ -37,7 +37,7 @@ class RacersModel extends Model {
     protected $activationkey;
     protected $active;
     protected $racerssession;
-            
+
     public function __construct() {
         parent::__construct();
         $this->mapRacers();
@@ -72,7 +72,7 @@ class RacersModel extends Model {
         if ($passcheck == true) {
             session_start();
             $this->f3->set('session', session_id());
-            echo $this->template->render('racers/main.html');
+            
         }
     }
 

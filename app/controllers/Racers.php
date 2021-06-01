@@ -40,6 +40,5 @@ class Racers extends Controller {
         $this->racersmodel->signupRacers();
         echo $this->template->render('main.html');
     }
-
-
+    
 }
