@@ -25,7 +25,7 @@
         <div class="navbar-collapse collapse" id="navbars" style="">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-dark">
+                    <a href="dashboard" class="nav-link link-dark">
                         <i class="fas fa-laptop-house"></i>
                         <?= ($dashboard)."
 " ?>
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-dark">
+                    <a href="license" class="nav-link link-dark">
                         <i class="fas fa-id-card"></i>
                         <?= ($license)."
 " ?>
@@ -81,7 +81,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link link-dark">
+                    <a href="logout" class="nav-link link-dark">
                         <i class="fas fa-power-off"></i>
                         <?= ($logout)."
 " ?>

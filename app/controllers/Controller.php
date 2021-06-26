@@ -20,21 +20,17 @@
 //! Base Controller
 class Controller {
 
-    protected $template; //! template instance
-    
+    protected $f3;          //! fat-free framework instance
+    protected $template;    //! template instance
+
     /**
      * Initialize Template object
+     * Initialize Framework object
      */
     public function __construct() {
+        $f3 = Base::instance();
+        $this->f3 = $f3;
         $this->template = new Template;
-    }
-        
-    public function beforeroute() {
-        //echo 'Before routing - ';
-    }
-
-    public function afterroute() {
-        //echo '- After routing';
     }
 
 }

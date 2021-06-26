@@ -18,27 +18,87 @@
  */
 
 /**
- * Description of Racers
- *
- * @author franc
+ * Handles all the actions from racers
+ * 
  */
-
 class Racers extends Controller {
-    
+
     protected $racersmodel; //!object Racers Model
-    
+    protected $racers;
+    protected $validlogin;
+
     public function __construct() {
         parent::__construct();
         $this->racersmodel = new RacersModel();
     }
-    
-    public function login() {
-        $this->racersmodel->loginRacers();
+
+    /**
+     * Keeping the session alive between every routing
+     * 
+     */
+    public function beforeroute() {
+        session_start();
     }
-    
-    public function register(){
+
+    public function goToIndex() {
+        echo $this->template->render('main.html');
+        exit;
+    }
+
+    /**
+     * starts the login process
+     */
+    public function login() {
+        $this->validlogin = $this->racersmodel->loginRacers();
+        if ($this->validlogin == true) {
+            session_start();
+            $_SESSION['id'] = session_id();
+            $this->f3->set('sessionid', $_SESSION['id']);
+            $this->dashboard(); //open dashboard
+        }
+    }
+
+    /**
+     * shows and loads data to racer dashboard
+     * checks if session id exists and render the page
+     * if session id doesnt exist render the main page
+     */
+    public function dashboard() {
+        if (!isset($_SESSION['id'])) {
+            $this->goToIndex(); //!render the main page
+        } else {
+            $this->f3->set('sessionid', $_SESSION['id']);
+            echo $this->template->render('racers/dashboard.html');
+            }
+    }
+
+    /**
+     * shows and loads data to racer license
+     */
+    public function license() {
+        if (!isset($_SESSION['id'])) {
+            $this->goToIndex();
+        } else {
+            $this->f3->set('sessionid', $_SESSION['id']);
+            echo $this->template->render('racers/license.html');
+        }
+    }
+
+    /**
+     * destroys session and logout the racer
+     */
+    public function logout() {
+        session_destroy();
+        echo $this->template->render('main.html');
+        exit;
+    }
+
+    /**
+     * starts a new racer registration
+     */
+    public function register() {
         $this->racersmodel->signupRacers();
         echo $this->template->render('main.html');
     }
-    
+
 }

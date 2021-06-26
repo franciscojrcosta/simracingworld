@@ -17,20 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class Views {
+class Views extends Controller {
 
     protected $section;
     protected $page;
     protected $pagetorender;
 
-    public function __construct() {
-        $f3 = Base::instance();
-        $this->f3 = $f3;
-        $this->template = new Template;
-    }
-
     public function beforeroute() {
-        //echo 'Before routing - ';
+    
     }
 
     public function afterroute() {

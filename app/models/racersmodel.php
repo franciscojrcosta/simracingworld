@@ -27,16 +27,7 @@ class RacersModel extends Model {
     protected $racersdata; //! Database object for table racers
     protected $email;
     protected $password;
-    protected $firstname;
-    protected $middlename;
-    protected $lastname;
-    protected $birthdate;
-    protected $registrationdate;
-    protected $nationality;
-    protected $flag;
-    protected $activationkey;
-    protected $active;
-    protected $racerssession;
+    protected $passcheck;
 
     public function __construct() {
         parent::__construct();
@@ -55,24 +46,46 @@ class RacersModel extends Model {
         $signup = new RacersSignup();
         $signup->initSignup();
     }
-
+    
+    /**
+     * 
+     */
+    public function getRacersData($email){
+       $this->racersdata->load(array('email=?', $email));
+       if($this->racersdata->dry){
+           echo 'Error on class RacersModel function getRacersData could not load any data';
+       } else {
+           $_SESSION['email'] = $this->racersdata->email;
+           /* continue loading data into SESSION */
+       }
+    }
+    
+    
+    /**
+     * Checks user e-mail
+     * Checks user password
+     * Returns loginvalid
+     */
     public function loginRacers() {
         $this->email = filter_input(INPUT_POST, 'email');
         $this->password = filter_input(INPUT_POST, 'password');
         $this->racersdata->load(array('email=?', $this->email));
         if ($this->racersdata->dry()) {
-            echo 'No user was found';
-            return;
-        } else {
-            $passcheck = password_verify($this->password, $this->racersdata->password);
+            $this->f3->set('loginMsg1', 'User does not exist. Register or try again!');
+            $this->f3->set('loginMsg2', NULL);
+            $this->f3->set('loginError', true);
+            echo $this->template->render('racers/login.html');
         }
-        if ($passcheck == false) {
-            echo 'password errada';
+        $this->passcheck = password_verify($this->password, $this->racersdata->password);
+        if ($this->passcheck == false) {
+            $this->f3->set('loginMsg1', NULL);
+            $this->f3->set('loginMsg2', 'Incorrect password. Try again!');
+            $this->f3->set('loginError', true);
+            echo $this->template->render('racers/login.html');
         }
-        if ($passcheck == true) {
-            session_start();
-            $this->f3->set('session', session_id());
-            
+        if ($this->passcheck == true) {
+            $validlogin = true;
+            return $validlogin;
         }
     }
 
