@@ -23,14 +23,22 @@
  * @author franc
  */
 class RacersSignup extends RacersModel {
-       
-    public function initSignup(){
-        $this->initRacerData();
-        $this->register();     
-    }
+    
+    protected $authtools; /* object that deals with some authentication parameters */
             
+    public function initSignup(){
+        $this->authtools = new SRW_AuthTools();
+        $this->initRacerData();
+        $this->register();
+        $this->authtools->sendActivationKey($this->email, $this->activationkey);
+    }
+    
+    /**
+     * initializes racer data from data received from registration form
+     * encrypt the password
+     * generates an activation token
+     */
     protected function initRacerData() {
-        $encryptation = new SRW_PassEnc();
         $this->email = filter_input(INPUT_POST, 'email');
         $this->password = filter_input(INPUT_POST, 'password');
         $this->firstname = filter_input(INPUT_POST, 'firstname');
@@ -40,11 +48,14 @@ class RacersSignup extends RacersModel {
         $this->registrationdate = date("Y-m-d");
         $this->nationality = filter_input(INPUT_POST, 'nationality');
         $this->flag = strtolower($this->nationality).".png";
-        $this->activationkey = $encryptation->genActivationKey();
         $this->active = false;
-        $this->password = $encryptation->encryptPassword($this->password);
+        $this->activationkey = $this->authtools->genActivationKey(); /*Generates activation key */
+        $this->password = $this->authtools->encryptPassword($this->password); /*Encrypts the password */
     }
     
+    /**
+     * Saves the racer data
+     */
     protected function register() {
         $this->racersdata->email        = $this->email;
         $this->racersdata->password     = $this->password;
@@ -55,6 +66,7 @@ class RacersSignup extends RacersModel {
         $this->racersdata->registrationdate = $this->registrationdate;
         $this->racersdata->nationality  = $this->nationality;
         $this->racersdata->flag         = $this->flag;
+        $this->racersdata->active       = $this->active;
         $this->racersdata->activationkey= $this->activationkey;
         $this->racersdata->save(); //saves all the data to db
         $this->racersdata->reset(); //clean up the stored variables and prepares for new data

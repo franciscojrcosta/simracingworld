@@ -6,4 +6,4 @@ If you don't use any visibility modifier, the property / method will be public.
 
 
 index.php
- - remover o código referente ao error repoting antes de publicar
+ - remover o código referente ao error reporting antes de publicar

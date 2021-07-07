@@ -1,0 +1,67 @@
+TODO
+_____________________________
+DRIVER SIGNUP
+- Driver Signup needs to check the if the e-mail is already used in other registration
+- Send the activation e-mail after a new driver has registered
+- Forgot password has to send an email with a token for password change
+____________________________
+
+Admin Panel
+Rules table for drivers
+- max sponsors
+- min value per sponsor
+- max value per sponsor
+- min days of contract
+- max days of contract
+
+Rules table for teams
+- max sponsors
+- min value per sponsor
+- max value per sponsor
+- min days of contract
+- max days of contract
+
+Rules table for bank
+- min loan value
+- max loan value
+- min interest rate
+- max interest rate
+- min repayment days
+- max repayment days
+
+
+Championship
+- CID
+- name
+- startdate
+- enddate
+- simulator
+- license
+- entry fee
+- maxdrivers
+- c1prize
+- c2prize
+- c3prize
+- c4prize
+- c5prize
+- c6prize
+- c7prize
+- c8prize
+- c9prize
+- c10prize
+- otherprize
+
+Championship Entries
+- RID
+- TeamId
+- PlayerID
+
+Event
+- EID
+- Date
+- PracticeStart
+- QualifyStart
+- WarmupStart
+- RaceStart
+- RaceDurationLaps
+- RaceDurationTime

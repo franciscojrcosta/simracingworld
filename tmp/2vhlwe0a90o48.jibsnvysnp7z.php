@@ -37,13 +37,13 @@
 
         <script type="text/javascript">
             function Validate() {
-                var password = document.getElementById("inputPassword").value;
-                var confirmPassword = document.getElementById("inputConfirmPassword").value;
-                if (password != confirmPassword) {
-                    alert("Passwords do not match.");
-                    return false;
+            var password = document.getElementById("inputPassword").value;
+            var confirmPassword = document.getElementById("inputConfirmPassword").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
                 }
-            return true;
+                return true;
             }
         </script>
 
@@ -371,3 +371,6 @@
         </div>
     </body>
 </html>
+<!-- SCRIPTS to check for the existence of user on database -->
+<script src="../jquery/jquery-3.6.0.min.js" />
+<script src="../js/checkemail.js" />

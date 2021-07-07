@@ -52,18 +52,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     </head>
     <body>
-        
+
         <!-- NAVIGATION MENU -->
         <div>
             <?php echo $this->render('nav.html',NULL,get_defined_vars(),0); ?>
         </div>
-        
+
         <!-- MAIN -->
         <div class="container">
-            TODO write content
+            <div class="row gy-5">
+                <div class="p-3">teste</div>
+            </div>
+            <div class="row gy-5">
+                <div class="p-3">eseseseste</div>
+            </div>
         </div>
-        <div><p><?= ($sessionid) ?></p></div>
-        
+
         <!-- FOOTER -->
         <div>
             <?php echo $this->render('footer.html',NULL,get_defined_vars(),0); ?>

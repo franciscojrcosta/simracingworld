@@ -43,16 +43,23 @@ class Authentication extends Controller {
     }
     
     /**
-     * show team login page
+     * show teams login page
      */
     public function loginTeam(){
         echo $this->template->render('teams/login.html');
     }
     
     /**
-     * show team sigup page
+     * show teams sigup page
      */
     public function signupTeam(){
         echo $this->template->render('teams/signup.html');
+    }
+    
+    public function activateAccount(){
+        $user = $this->f3->get('PARAMS.user');
+        $key = $this->f3->get('PARAMS.key');
+        $racermodel = new RacersModel();
+        $racermodel->getRacersByEmail($user);
     }
 }

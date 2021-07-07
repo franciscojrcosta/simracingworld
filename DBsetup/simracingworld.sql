@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS teams (
     password VARCHAR(254),
     teamname VARCHAR(254),
     managername VARCHAR(254),
+    managerdriverid VARCHAR(254),
     nationality VARCHAR(2),
     flag VARCHAR(254),
     lastlogin DATE,

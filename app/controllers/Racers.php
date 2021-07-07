@@ -98,7 +98,8 @@ class Racers extends Controller {
      */
     public function register() {
         $this->racersmodel->signupRacers();
-        echo $this->template->render('main.html');
+        echo 'racer.php - func register - should output a sucess sent email message or not';
+        //echo $this->template->render('main.html');
     }
 
 }
