@@ -1,3 +1,18 @@
+CREATE TABLE IF NOT EXISTS settings (
+    adminuser VARCHAR(255),
+    adminpass VARCHAR(255),
+    racersponsormaxnum INT,
+    racersponsorminval INT,
+    racersponsormaxval INT,
+    racersponsorminday INT,
+    racersponsormaxday INT,
+    teamsponsormaxnum INT,
+    teamsponsorminval INT,
+    teamsponsormaxval INT,
+    teamsponsorminday INT,
+    teamsponsormaxday INT,
+    PRIMARY KEY (adminuser)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS racers (
     racerID INT NOT NULL AUTO_INCREMENT,

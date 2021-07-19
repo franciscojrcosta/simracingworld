@@ -72,7 +72,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="#"><?= ($forgotpassword) ?></a></div>
+                                        <div class="small"><a href="forgotpass"><?= ($forgotpassword) ?></a></div>
                                     </div>
                                 </div>
                             </div>

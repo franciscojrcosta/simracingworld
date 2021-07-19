@@ -1,9 +1,4 @@
 TODO
-_____________________________
-DRIVER SIGNUP
-- Driver Signup needs to check the if the e-mail is already used in other registration
-- Send the activation e-mail after a new driver has registered
-- Forgot password has to send an email with a token for password change
 ____________________________
 
 Admin Panel

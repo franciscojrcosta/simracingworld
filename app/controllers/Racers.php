@@ -24,12 +24,14 @@
 class Racers extends Controller {
 
     protected $racersmodel; //!object Racers Model
+    protected $racersauth;
     protected $racers;
     protected $validlogin;
 
     public function __construct() {
         parent::__construct();
         $this->racersmodel = new RacersModel();
+        $this->racersauth = new RacersAuth();
     }
 
     /**
@@ -49,7 +51,7 @@ class Racers extends Controller {
      * starts the login process
      */
     public function login() {
-        $this->validlogin = $this->racersmodel->loginRacers();
+        $this->validlogin = $this->racersauth->login();
         if ($this->validlogin == true) {
             session_start();
             $_SESSION['id'] = session_id();
@@ -97,9 +99,8 @@ class Racers extends Controller {
      * starts a new racer registration
      */
     public function register() {
-        $this->racersmodel->signupRacers();
-        echo 'racer.php - func register - should output a sucess sent email message or not';
-        //echo $this->template->render('main.html');
+        $this->racersmodel->signup();
+        echo $this->template->render('racers/activate.html');
     }
 
 }

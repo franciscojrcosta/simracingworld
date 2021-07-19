@@ -30,7 +30,8 @@ class RacersSignup extends RacersModel {
         $this->authtools = new SRW_AuthTools();
         $this->initRacerData();
         $this->register();
-        $this->authtools->sendActivationKey($this->email, $this->activationkey);
+        $accounttype = 'racers'; /* the type of account to be activated, a racers account or teams or organizations*/
+        $this->authtools->sendActivationKey($accounttype, $this->email, $this->activationkey);
     }
     
     /**

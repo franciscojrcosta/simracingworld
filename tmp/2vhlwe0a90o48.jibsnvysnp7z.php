@@ -36,15 +36,39 @@
         </style>
 
         <script type="text/javascript">
-            function Validate() {
+        function Validate() {
             var password = document.getElementById("inputPassword").value;
             var confirmPassword = document.getElementById("inputConfirmPassword").value;
             if (password != confirmPassword) {
                 alert("Passwords do not match.");
                 return false;
-                }
-                return true;
             }
+            return true;
+        }
+        
+        //send a XMLHttpRequest to check if e-mail exists in DB
+        function checkEmail() {
+            var email = document.getElementById("inputEmail").value;
+            xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    //if responseText is FALSE then email is not in DB
+                    //continue with user registration
+                    if (xhr.responseText == "TRUE"){
+                        alert('User E-mail is already registered, please use another e-mail!');
+                        document.getElementById('submitButton').disabled = true;
+                        document.getElementById('inputEmail').value = "";
+                        document.getElementById('inputEmail').focus();
+                    } else {
+                        document.getElementById('submitButton').disabled = false;
+                    }
+                }
+            };
+
+            xhr.open('get', '/user/racers/checkemail/'+email);
+            xhr.send();
+        }
         </script>
 
     </head>
@@ -62,7 +86,7 @@
                                         <form id="registrationform" name="registration_form" action="/racers/register" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmail"><?= ($email) ?></label>
-                                                <input class="form-control py-4" id="inputEmail" name="email" type="email" required placeholder="Enter email address" />
+                                                <input onblur="checkEmail()" class="form-control py-4" id="inputEmail" name="email" type="email" required placeholder="Enter email address" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword"><?= ($password) ?></label>
@@ -86,7 +110,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputBirthDate"><?= ($birthdate) ?></label>
-                                                <input class="form-control py-4" id="inputBirthDate" name="birthdate" type="date" />
+                                                <input class="form-control py-4" id="inputBirthDate" name="birthdate" required type="date" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputNationality"><?= ($nationality) ?></label>
@@ -343,7 +367,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button type="submit" class="btn btn-primary" onclick="return Validate()"><?= ($save) ?></button>
+                                                <button type="submit" class="btn btn-primary" id="submitButton" onclick="return Validate()"><?= ($save) ?></button>
                                             </div>
                                         </form>
                                     </div>
@@ -371,6 +395,3 @@
         </div>
     </body>
 </html>
-<!-- SCRIPTS to check for the existence of user on database -->
-<script src="../jquery/jquery-3.6.0.min.js" />
-<script src="../js/checkemail.js" />
