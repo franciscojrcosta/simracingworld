@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS settings (
-    adminuser VARCHAR(255),
-    adminpass VARCHAR(255),
+    adminuser VARCHAR(254),
+    adminpass VARCHAR(254),
     racersponsormaxnum INT,
     racersponsorminval INT,
     racersponsormaxval INT,
@@ -16,18 +16,18 @@ CREATE TABLE IF NOT EXISTS settings (
 
 CREATE TABLE IF NOT EXISTS racers (
     racerID INT NOT NULL AUTO_INCREMENT,
-    email VARCHAR(255),
-    password VARCHAR(255),
-    firstname VARCHAR(255),
-    middlename VARCHAR(255),
-    lastname VARCHAR(255),
+    email VARCHAR(254),
+    password VARCHAR(254),
+    firstname VARCHAR(254),
+    middlename VARCHAR(254),
+    lastname VARCHAR(254),
     birthdate DATE,
     registrationdate DATE,
     lastlogin DATE,
     nationality VARCHAR(2),
-    flag VARCHAR(255),
-    photo VARCHAR(255),
-    simulators VARCHAR(255),
+    flag VARCHAR(254),
+    photo VARCHAR(254),
+    simulators VARCHAR(254),
     bankroll DECIMAL(11,2),
     skill INT,
     attacking INT,
@@ -64,10 +64,10 @@ CREATE TABLE IF NOT EXISTS teams (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS organizations (
-    ID INT NOT NULL AUTO_INCREMENT,
+    organizationID INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(254),
     password VARCHAR(254),
-    orgname VARCHAR(254),
+    organization VARCHAR(254),
     managername VARCHAR(254),
     nationality VARCHAR(2),
     flag VARCHAR(254),
@@ -83,5 +83,10 @@ CREATE TABLE IF NOT EXISTS organizations (
     discord VARCHAR(254),
     bankroll DECIMAL(11,2),
     active BOOLEAN,
-    PRIMARY KEY (id)
+    PRIMARY KEY (organizationID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS sponsors (
+    sponsorID INT NOT NULL AUTO_INCREMENT,
+    sponsorname VARCHAR(254),
+)
