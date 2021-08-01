@@ -22,39 +22,7 @@
  *
  * @author franc
  */
-class Authentication extends Controller {
-
-    /**
-     * set initial messages
-     * shows racer login page
-     */
-    public function loginRacer() {
-        $this->f3->set('loginMsg1', '');
-        $this->f3->set('loginMsg2', '');
-        $this->f3->set('loginError', NULL);
-        echo $this->template->render('racers/login.html');
-    }
-
-    /**
-     * show racer signup page
-     */
-    public function signupRacer() {
-        echo $this->template->render('racers/signup.html');
-    }
-
-    /**
-     * show teams login page
-     */
-    public function loginTeam() {
-        echo $this->template->render('teams/login.html');
-    }
-
-    /**
-     * show teams sigup page
-     */
-    public function signupTeam() {
-        echo $this->template->render('teams/signup.html');
-    }
+class Accounts extends Controller {
 
     /**
      * will activate the account for
@@ -83,7 +51,7 @@ class Authentication extends Controller {
                 break;
         }
     }
-    
+
     /**
      * Checks if the e-mail exists in the database
      * send text response to XMLHttpRequest that comes from signup.html
@@ -99,6 +67,26 @@ class Authentication extends Controller {
         } else {
             echo 'TRUE';
         }
+    }
+
+    public function forgotpass() {
+        $accounttype = $this->f3->get('PARAMS.accounttype');
+        echo $accounttype;
+        echo $this->randomString();
+    }
+
+    /**
+     * generates a random string to be used as recovery password
+     * @return string
+     */
+    protected function randomString() {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < 10; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $randomString .= $characters[$index];
+        }
+        return $randomString;
     }
 
 }
