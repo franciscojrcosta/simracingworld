@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="The SimRacing Management">
@@ -54,7 +54,17 @@
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword"><?= ($password) ?></label>
                                                 <input class="form-control py-4" id="inputPassword" name="password" type="password" required placeholder="Enter password" />
-                                            </div>             
+                                                <!--<h5 style="color: red"><?= ($loginMsg1) ?></h5>
+                                                <h5 style="color: red"><?= ($loginMsg2) ?></h5> -->
+                                            </div>
+                                            <?php if ($loginError==true): ?>
+                                                
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <?= ($loginMsg1) ?><?= ($loginMsg2)."
+" ?>
+                                                    </div>
+                                                
+                                            <?php endif; ?>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="btn btn-info" href="signup"><?= ($signup) ?></a>
                                                 <button type="submit" class="btn btn-primary"><?= ($login) ?></button>
@@ -62,7 +72,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="#"><?= ($forgotpassword) ?></a></div>
+                                        <div class="small"><a href="forgotpass"><?= ($forgotpassword) ?></a></div>
                                     </div>
                                 </div>
                             </div>

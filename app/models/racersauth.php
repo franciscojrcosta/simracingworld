@@ -59,6 +59,8 @@ class RacersAuth extends RacersModel {
             echo $this->template->render('racers/login.html');
         }
         if ($this->passcheck == true and $this->racersdata->active == true) {
+            $this->racersdata->lastlogin = date("Y-m-d");
+            $this->racersdata->save();
             $validlogin = true;
             return $validlogin;
         }
@@ -79,7 +81,7 @@ class RacersAuth extends RacersModel {
      * Generates the unique id for the activation key
      * @return string Sactivationkey
      */
-    public function genActivationKey() {
+    public function generateActivationKey() {
         $this->activationkey = uniqid();
         return $this->activationkey;
     }

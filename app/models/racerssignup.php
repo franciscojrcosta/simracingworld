@@ -22,16 +22,13 @@
  *
  * @author franc
  */
-class RacersSignup extends RacersModel {
-    
-    protected $authtools; /* object that deals with some authentication parameters */
+class RacersSignup extends RacersAuth {
             
     public function initSignup(){
-        $this->authtools = new SRW_AuthTools();
         $this->initRacerData();
         $this->register();
         $accounttype = 'racers'; /* the type of account to be activated, a racers account or teams or organizations*/
-        $this->authtools->sendActivationKey($accounttype, $this->email, $this->activationkey);
+        $this->sendActivationKey($accounttype, $this->email, $this->activationkey);
     }
     
     /**
@@ -50,8 +47,8 @@ class RacersSignup extends RacersModel {
         $this->nationality = filter_input(INPUT_POST, 'nationality');
         $this->flag = strtolower($this->nationality).".png";
         $this->active = false;
-        $this->activationkey = $this->authtools->genActivationKey(); /*Generates activation key */
-        $this->password = $this->authtools->encryptPassword($this->password); /*Encrypts the password */
+        $this->activationkey = $this->generateActivationKey(); /*Generates activation key */
+        $this->password = $this->encryptPassword($this->password); /*Encrypts the password */
     }
     
     /**
