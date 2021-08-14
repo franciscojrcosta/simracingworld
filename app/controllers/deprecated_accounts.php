@@ -24,6 +24,8 @@
  */
 class Accounts extends Controller {
 
+    public $accounttype;
+    
     /**
      * will activate the account for
      * Racers or teams or organizations

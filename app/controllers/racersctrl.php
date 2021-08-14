@@ -21,17 +21,17 @@
  * Handles all the actions from racers
  * 
  */
-class Racers extends Controller {
+class RacersCtrl extends Controller {
 
-    protected $racersmodel; //!object Racers Model
-    protected $racersauth;
+    protected $authracers;      //! object AuthRacers Model
+    protected $racersmodel;     //! object Racers Model
     protected $racers;
     protected $validlogin;
 
     public function __construct() {
         parent::__construct();
         $this->racersmodel = new RacersModel();
-        $this->racersauth = new RacersAuth();
+        $this->authracers = new AuthRacers();
     }
 
     /**
@@ -49,13 +49,14 @@ class Racers extends Controller {
 
     /**
      * starts the login process
+     * sets session id, user and session type
      */
-    public function login() {
-        $this->validlogin = $this->racersauth->login();
-        if ($this->validlogin == true) {
+    public function doLogin() {
+        if ($this->authracers->login() == true) {
             session_start();
             $_SESSION['id'] = session_id();
-            $this->f3->set('sessionid', $_SESSION['id']);
+            $_SESSION['user'] = $this->authracers->user;
+            $_SESSION['type'] = 'racers';
             $this->dashboard(); //open dashboard
         }
     }
@@ -70,19 +71,33 @@ class Racers extends Controller {
             $this->goToIndex(); //!render the main page
         } else {
             $this->f3->set('sessionid', $_SESSION['id']);
-            echo $this->template->render('racers/dashboard.html');
-            }
+            echo $this->template->render('dashboard.html');
+        }
     }
 
     /**
      * shows and loads data to racer license
      */
-    public function license() {
+    public function licenses() {
         if (!isset($_SESSION['id'])) {
             $this->goToIndex();
         } else {
             $this->f3->set('sessionid', $_SESSION['id']);
-            echo $this->template->render('racers/license.html');
+            echo $this->template->render('licenses.html');
+        }
+    }
+
+    /**
+     *  show and loads sponsor list
+     */
+    public function sponsors() {
+        if (!isset($_SESSION['id'])) {
+            $this->goToIndex();
+        } else {
+            $this->f3->set('sessionid', $_SESSION['id']);
+            $this->f3->set('user', $_SESSION['user']);
+            $this->f3->set('type', $_SESSION['type']);
+            echo $this->template->render('sponsors.html');
         }
     }
 
@@ -100,7 +115,7 @@ class Racers extends Controller {
      */
     public function register() {
         $this->racersmodel->signup();
-        echo $this->template->render('racers/activate.html');
+        echo $this->template->render('activate.html');
     }
 
 }

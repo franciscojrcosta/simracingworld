@@ -23,8 +23,8 @@
  * @author franc
  */
 class RacersModel extends Model {
-
-    protected $racersdata; //! Database object for table racers
+    
+    protected $racersdata;
     protected $email;
     protected $password;
     protected $passcheck;
@@ -38,8 +38,8 @@ class RacersModel extends Model {
     /**
      * Maps database table racers to object racersdata
      */
-    protected function mapDb() {
-        $racersdata = new DB\SQL\Mapper($this->srwdatabase, 'racers');
+    protected function mapDB() {
+        $racersdata = new DB\SQL\Mapper($this->srwdatabase, 'racers');        
         $this->racersdata = $racersdata;
     }
 

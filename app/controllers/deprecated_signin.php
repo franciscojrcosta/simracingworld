@@ -18,29 +18,39 @@
  */
 
 /**
- * Description of SponsorContract
+ * Handles all requests of all login and signup pages
  *
  * @author franc
  */
-class Sponsors extends Controller {
-    
-    protected $sponsormodel;
-    
-    public function __construct() {
-        parent::__construct();
-        $this->sponsormodel = new SponsorsModel();
+class Signin extends Controller {
+
+
+    public function loginRacer() {
+        $this->f3->set('loginMsg1', '');
+        $this->f3->set('loginMsg2', '');
+        $this->f3->set('loginError', NULL);
+        echo $this->template->render('racers/login.html');
+    }
+
+    /**
+     * show racer signup page
+     */
+    public function signupRacer() {
+        echo $this->template->render('racers/signup.html');
+    }
+
+    /**
+     * show teams login page
+     */
+    public function loginTeam() {
+        echo $this->template->render('teams/login.html');
+    }
+
+    /**
+     * show teams sigup page
+     */
+    public function signupTeam() {
+        echo $this->template->render('teams/signup.html');
     }
     
-    public function index(){
-        echo $this->template->render('racers/sponsor.html');
-    }
-    
-    public function contract() {
-        $this->sponsormodel->generateContractValue();
-        $this->sponsormodel->generateContractDays();
-        echo '<p>contract value '.$this->sponsormodel->contractvalue.'</p>';
-        echo '<p>contract start '.$this->sponsormodel->startdate.'</p>';
-        echo '<p>contract end '.$this->sponsormodel->enddate.'</p>';
-    }
-        
 }

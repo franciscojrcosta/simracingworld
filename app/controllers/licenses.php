@@ -18,29 +18,26 @@
  */
 
 /**
- * Description of SponsorContract
- *
- * @author franc
+ * Handles all the actions from racers
+ * 
  */
-class Sponsors extends Controller {
-    
-    protected $sponsormodel;
-    
+class Licenses extends Controller {
+
+
     public function __construct() {
         parent::__construct();
-        $this->sponsormodel = new SponsorsModel();
+    }
+
+    /**
+     * Keeping the session alive between every routing
+     * 
+     */
+    public function beforeroute() {
+        session_start();
+    }
+
+    public function tellname(){
+        echo 'teste';
     }
     
-    public function index(){
-        echo $this->template->render('racers/sponsor.html');
-    }
-    
-    public function contract() {
-        $this->sponsormodel->generateContractValue();
-        $this->sponsormodel->generateContractDays();
-        echo '<p>contract value '.$this->sponsormodel->contractvalue.'</p>';
-        echo '<p>contract start '.$this->sponsormodel->startdate.'</p>';
-        echo '<p>contract end '.$this->sponsormodel->enddate.'</p>';
-    }
-        
 }

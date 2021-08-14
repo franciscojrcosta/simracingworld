@@ -46,7 +46,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4"><?= ($login) ?></h3></div>
                                     <div class="card-body">
-                                        <form id="loginform" name="login_form" action="/racers/login" method="POST">
+                                        <form id="loginform" name="login_form" action="/racers/doLogin" method="POST">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress"><?= ($email) ?></label>
                                                 <input class="form-control py-4" id="inputEmailAddress" name="email" type="email" required placeholder="Enter email address" />
@@ -66,7 +66,7 @@
                                                 
                                             <?php endif; ?>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="btn btn-info" href="signup"><?= ($signup) ?></a>
+                                                <a class="btn btn-info" href="/racers/auth/showsignup"><?= ($signup) ?></a>
                                                 <button type="submit" class="btn btn-primary"><?= ($login) ?></button>
                                             </div>
                                         </form>

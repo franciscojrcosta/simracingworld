@@ -60,9 +60,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         
         <!-- MAIN -->
         <div class="container">
-            LICENSE - TODO write content
+            <div
+                <input/><button>teste</button>
+            </div>
+            <div>
+                
+            </div>
         </div>
-        <div><p><?= ($sessionid) ?></p><?= ($variavel) ?></div>
+        <div>
+            <p><?= ($sessionid) ?></p>
+            <p><?= ($user) ?></p>
+            <p><?= ($type) ?></p>
+        </div>
         
         <!-- FOOTER -->
         <div>

@@ -26,7 +26,7 @@ Rules table for bank
 
 
 Championship
-- CID
+- championshipID
 - name
 - startdate
 - enddate
@@ -60,3 +60,12 @@ Event
 - RaceStart
 - RaceDurationLaps
 - RaceDurationTime
+
+Event Results
+- resultsID
+- championship
+- event
+- driver
+- finalposition
+- poleposition
+- fastestlap

@@ -18,29 +18,15 @@
  */
 
 /**
- * Description of SponsorContract
+ * Description of AuthController
  *
+ * * 
  * @author franc
  */
-class Sponsors extends Controller {
-    
-    protected $sponsormodel;
-    
-    public function __construct() {
+class AuthCtrl extends Controller {
+
+    function __construct() {
         parent::__construct();
-        $this->sponsormodel = new SponsorsModel();
     }
-    
-    public function index(){
-        echo $this->template->render('racers/sponsor.html');
-    }
-    
-    public function contract() {
-        $this->sponsormodel->generateContractValue();
-        $this->sponsormodel->generateContractDays();
-        echo '<p>contract value '.$this->sponsormodel->contractvalue.'</p>';
-        echo '<p>contract start '.$this->sponsormodel->startdate.'</p>';
-        echo '<p>contract end '.$this->sponsormodel->enddate.'</p>';
-    }
-        
+
 }

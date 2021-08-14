@@ -18,29 +18,36 @@
  */
 
 /**
- * Description of SponsorContract
+ * Description of RacersModel
  *
  * @author franc
  */
-class Sponsors extends Controller {
-    
-    protected $sponsormodel;
-    
+class SponsorsModel extends Model {
+
+    protected $sponsorsdata; //! Database object for table Sponsorso
+    protected $minvalue;
+    protected $maxvalue;
+    protected $minmonths;
+    protected $maxmonths;
+    public $startdate;
+    public $enddate;
+    public $contractvalue;
+
     public function __construct() {
         parent::__construct();
-        $this->sponsormodel = new SponsorsModel();
+        $this->mapDb();
+    }
+
+    /**
+     * Maps database table racers to object racersdata
+     */
+    protected function mapDb() {
+        $sponsorsdata = new DB\SQL\Mapper($this->srwdatabase, 'sponsors');
+        $this->sponsorsdata = $sponsorsdata;
     }
     
-    public function index(){
-        echo $this->template->render('racers/sponsor.html');
-    }
     
-    public function contract() {
-        $this->sponsormodel->generateContractValue();
-        $this->sponsormodel->generateContractDays();
-        echo '<p>contract value '.$this->sponsormodel->contractvalue.'</p>';
-        echo '<p>contract start '.$this->sponsormodel->startdate.'</p>';
-        echo '<p>contract end '.$this->sponsormodel->enddate.'</p>';
-    }
-        
+    
+    
+
 }

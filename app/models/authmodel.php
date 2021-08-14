@@ -18,64 +18,15 @@
  */
 
 /**
- * Description of RacersAuth
+ * Description of RacersAuth.
  *
  * @author franc
  */
-class RacersAuth extends RacersModel {
+class AuthModel extends Model {
 
     public $activationkey;
     public $hashedpassword;
-    public $raceractive;
 
-     /**
-     * Checks user e-mail
-     * Checks user password
-     * Checks if user is active
-     * Returns loginvalid
-     * Sets Messages to display if login is not ok
-     */
-    public function login() {
-        $this->email = filter_input(INPUT_POST, 'email');
-        $this->password = filter_input(INPUT_POST, 'password');
-        $this->racersdata->load(array('email=?', $this->email));
-        if ($this->racersdata->dry()) { /* Check if there is any data loaded in racersdata */
-            $this->f3->set('loginMsg1', 'User does not exist. Register or try again!');
-            $this->f3->set('loginMsg2', null);
-            $this->f3->set('loginError', true);
-            echo $this->template->render('racers/login.html');
-        }
-        $this->passcheck = password_verify($this->password, $this->racersdata->password); /* Checks the password */
-        if ($this->passcheck == false) {
-            $this->f3->set('loginMsg1', null);
-            $this->f3->set('loginMsg2', 'Incorrect password. Try again!');
-            $this->f3->set('loginError', true);
-            echo $this->template->render('racers/login.html');
-        }
-        if ($this->racersdata->active == false) { /* checks if racer is active */
-            $this->f3->set('loginMsg1', 'Your account is not active, please check your e-mail to activate account!');
-            $this->f3->set('loginMsg2', null);
-            $this->f3->set('loginError', true);
-            echo $this->template->render('racers/login.html');
-        }
-        if ($this->passcheck == true and $this->racersdata->active == true) {
-            $this->racersdata->lastlogin = date("Y-m-d");
-            $this->racersdata->save();
-            $validlogin = true;
-            return $validlogin;
-        }
-    }
-
-    public function activate($email, $key) {
-        $this->racersdata->load(array('email=?', $email));
-        if ($this->racersdata->activationkey == $key) {
-            $this->racersdata->active = true;
-            $this->racersdata->save();
-            $this->raceractive = true;
-        } else {
-            $this->raceractive = false;
-        }
-    }
     
     /**
      * Generates the unique id for the activation key

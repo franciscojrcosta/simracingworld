@@ -18,42 +18,47 @@
  */
 
 /**
- * Handles all requests of all login and signup pages
+ * Description of RacersAuth
  *
+ * NOTE: the function doLogin is at Racers Controller in order to start_session
+ * to work and the correct path being used in links inside racers app.
  * @author franc
  */
-class Signin extends Controller {
+class AuthRacersCtrl extends AuthCtrl {
 
-        /**
+    protected $racersauthmod; //! object RacersAuthMod
+
+    function __construct() {
+        parent::__construct();
+        $this->authracers = new AuthRacers();
+    }
+
+    /**
      * set initial messages
      * shows racer login page
      */
-    public function loginRacer() {
+    public function showLogin() {
         $this->f3->set('loginMsg1', '');
         $this->f3->set('loginMsg2', '');
         $this->f3->set('loginError', NULL);
-        echo $this->template->render('racers/login.html');
+        echo $this->template->render('login.html');
     }
 
-    /**
-     * show racer signup page
-     */
-    public function signupRacer() {
-        echo $this->template->render('racers/signup.html');
+    public function showSignup() {
+        echo $this->template->render('signup.html');
     }
 
-    /**
-     * show teams login page
-     */
-    public function loginTeam() {
-        echo $this->template->render('teams/login.html');
+
+    public function doSignup() {
+        
     }
 
-    /**
-     * show teams sigup page
-     */
-    public function signupTeam() {
-        echo $this->template->render('teams/signup.html');
+    public function forgotPassword() {
+        
     }
-    
+
+    public function activateAccount() {
+        
+    }
+
 }
