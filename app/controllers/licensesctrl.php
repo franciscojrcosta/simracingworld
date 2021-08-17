@@ -21,12 +21,7 @@
  * Handles all the actions from racers
  * 
  */
-class Licenses extends Controller {
-
-
-    public function __construct() {
-        parent::__construct();
-    }
+class LicensesCtrl extends Controller {
 
     /**
      * Keeping the session alive between every routing
@@ -34,10 +29,6 @@ class Licenses extends Controller {
      */
     public function beforeroute() {
         session_start();
-    }
-
-    public function tellname(){
-        echo 'teste';
     }
     
 }

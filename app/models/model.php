@@ -19,15 +19,19 @@
 
 /**
  * Description of Model
- *
- * @author franc
+ * @version 0.0.1C
+ * @author Francisco Costa
  */
 class Model {
 
     protected $f3;          //! Framework Instance
     protected $srwdatabase; //! Database Instance
     protected $template;    //! Template Instance
-
+    
+    /**
+     * set the framework instance $f3
+     * set the template instance $template
+     */
     public function __construct() {
         $f3 = Base::instance();
         $this->f3 = $f3;
@@ -35,6 +39,10 @@ class Model {
         $this->connectMySQL();
     }
 
+    /**
+     * Connects to MySQL database
+     * SYSDB, DBUSERNAME, DBPASSWORD are in the config.ini
+     */
     protected function connectMySQL() {
         $srwdatabase = new DB\SQL(
                 $this->f3->get('SYSDB'), //key SYSDB is at config.ini

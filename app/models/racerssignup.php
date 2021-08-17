@@ -22,13 +22,20 @@
  *
  * @author franc
  */
-class RacersSignup extends RacersAuth {
+class RacersSignup extends RacersModel {
+    
+    private $authmodel;
             
+    public function __construct() {
+        parent::__construct();
+        $this->authmodel = new AuthModel();
+    }
+    
     public function initSignup(){
         $this->initRacerData();
         $this->register();
         $accounttype = 'racers'; /* the type of account to be activated, a racers account or teams or organizations*/
-        $this->sendActivationKey($accounttype, $this->email, $this->activationkey);
+        $this->authmodel->sendActivationKey($accounttype, $this->email, $this->activationkey);
     }
     
     /**
@@ -47,8 +54,8 @@ class RacersSignup extends RacersAuth {
         $this->nationality = filter_input(INPUT_POST, 'nationality');
         $this->flag = strtolower($this->nationality).".png";
         $this->active = false;
-        $this->activationkey = $this->generateActivationKey(); /*Generates activation key */
-        $this->password = $this->encryptPassword($this->password); /*Encrypts the password */
+        $this->activationkey = $this->authmodel->generateActivationKey(); /*Generates activation key */
+        $this->password = $this->authmodel->encryptPassword($this->password); /*Encrypts the password */
     }
     
     /**

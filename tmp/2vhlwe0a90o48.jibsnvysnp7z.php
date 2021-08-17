@@ -83,7 +83,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4"><?= ($signup) ?></h3></div>
                                     <div class="card-body">
-                                        <form id="registrationform" name="registration_form" action="/racers/register" method="POST" enctype="multipart/form-data">
+                                        <form id="registrationform" name="registration_form" action="/racers/auth/dosignup" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmail"><?= ($email) ?></label>
                                                 <input onblur="checkEmail()" class="form-control py-4" id="inputEmail" name="email" type="email" required placeholder="Enter email address" />

@@ -27,7 +27,12 @@ class AuthRacers extends AuthModel {
     public $validlogin;
     protected $racersdata; // DB table object for racers
 
-     /**
+    public function __construct() {
+        parent::__construct();
+        $this->racersdata = new DB\SQL\Mapper($this->srwdatabase, 'racers');
+    }
+
+    /**
      * Checks user e-mail
      * Checks user password
      * Checks if user is active
@@ -35,7 +40,6 @@ class AuthRacers extends AuthModel {
      * Sets Messages to display if login is not ok
      */
     public function login() {
-        $this->racersdata = new DB\SQL\Mapper($this->srwdatabase, 'racers');
         $this->email = filter_input(INPUT_POST, 'email');
         $this->password = filter_input(INPUT_POST, 'password');
         $this->racersdata->load(array('email=?', $this->email));
@@ -68,6 +72,19 @@ class AuthRacers extends AuthModel {
         }
         unset($this->racersdata);
         return $this->validlogin;
+    }
+
+    
+    public function activate($email, $key) {
+        $this->racersdata->load(array('email=?', $email));
+        if ($this->racersdata->activationkey == $key) {
+            $this->racersdata->active = true;
+            $this->racersdata->save();
+            $this->raceractive = true;
+        } else {
+            $this->raceractive = false;
+        }
+        unset($this->racersdata);
     }
 
 }

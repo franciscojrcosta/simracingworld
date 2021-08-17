@@ -26,7 +26,7 @@
  */
 class AuthRacersCtrl extends AuthCtrl {
 
-    protected $racersauthmod; //! object RacersAuthMod
+    protected $authracers; //! object RacersAuthMod
 
     function __construct() {
         parent::__construct();
@@ -48,17 +48,13 @@ class AuthRacersCtrl extends AuthCtrl {
         echo $this->template->render('signup.html');
     }
 
-
+    /**
+     * Registers new racer in database
+     */
     public function doSignup() {
-        
+        $racerssignup = new RacersSignup();
+        $racerssignup->initSignup();
+        echo $this->template->render('activate.html');
     }
-
-    public function forgotPassword() {
-        
-    }
-
-    public function activateAccount() {
-        
-    }
-
+    
 }

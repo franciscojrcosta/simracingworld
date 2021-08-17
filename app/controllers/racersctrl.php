@@ -25,8 +25,6 @@ class RacersCtrl extends Controller {
 
     protected $authracers;      //! object AuthRacers Model
     protected $racersmodel;     //! object Racers Model
-    protected $racers;
-    protected $validlogin;
 
     public function __construct() {
         parent::__construct();
@@ -108,14 +106,6 @@ class RacersCtrl extends Controller {
         session_destroy();
         echo $this->template->render('main.html');
         exit;
-    }
-
-    /**
-     * starts a new racer registration
-     */
-    public function register() {
-        $this->racersmodel->signup();
-        echo $this->template->render('activate.html');
     }
 
 }

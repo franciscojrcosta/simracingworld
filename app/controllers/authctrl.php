@@ -25,8 +25,19 @@
  */
 class AuthCtrl extends Controller {
 
-    function __construct() {
-        parent::__construct();
+    public function activateAccount() {
+        $accounttype = $this->f3->get('PARAMS.accountype');
+        $email = $this->f3->get('PARAMS.email');
+        $key = $this->f3->get('PARAMS.key');
+        switch ($accounttype) {
+            case 'racers':
+                $authracers = new AuthRacers();
+                $authracers->activate($email, $key);
+                break;
+            case 'teams':
+                echo 'Teams activation';
+                break;
+        }
     }
 
 }

@@ -1,32 +1,6 @@
-CREATE TABLE IF NOT EXISTS settings (
-    settingsID INT NOT NULL AUTO_INCREMENT,
-    racersponsormaxnum INT,
-    racersponsorminval INT,
-    racersponsormaxval INT,
-    racersponsorminday INT,
-    racersponsormaxday INT,
-    teamsponsormaxnum INT,
-    teamsponsorminval INT,
-    teamsponsormaxval INT,
-    teamsponsorminday INT,
-    teamsponsormaxday INT,
-    PRIMARY KEY (settingsID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS accounts (
-    accountID INT NOT NULL AUTO_INCREMENT,
-    accountname VARCHAR (254),
-    email VARCHAR (254),
-    password VARCHAR (254),
-    accounttype VARCHAR (254),
-    registrationdate DATE,
-    lastlogin DATE,
-    PRIMARY KEY (userID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+/* TABLE RACERS */
 CREATE TABLE IF NOT EXISTS racers (
     racerID INT NOT NULL AUTO_INCREMENT,
-    account INT NOT NULL,
     email VARCHAR(254),
     password VARCHAR(254),
     firstname VARCHAR(254),
@@ -52,6 +26,21 @@ CREATE TABLE IF NOT EXISTS racers (
     active BOOLEAN,
     UNIQUE KEY (email),
     PRIMARY KEY (racerID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS settings (
+    settingsID INT NOT NULL AUTO_INCREMENT,
+    racersponsormaxnum INT,
+    racersponsorminval INT,
+    racersponsormaxval INT,
+    racersponsorminday INT,
+    racersponsormaxday INT,
+    teamsponsormaxnum INT,
+    teamsponsorminval INT,
+    teamsponsormaxval INT,
+    teamsponsorminday INT,
+    teamsponsormaxday INT,
+    PRIMARY KEY (settingsID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS teams (

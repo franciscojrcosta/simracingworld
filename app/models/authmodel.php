@@ -18,9 +18,9 @@
  */
 
 /**
- * Description of RacersAuth.
- *
- * @author franc
+ * Description of AuthModel
+ * @version 0.0.1B
+ * @author Francisco Costa
  */
 class AuthModel extends Model {
 
@@ -54,8 +54,6 @@ class AuthModel extends Model {
      * sends an e-mail to the destination with the activation key
      */
     public function sendActivationKey($accounttype, $email, $key) {
-        $f3 = Base::instance();
-        $this->f3 = $f3;
         $smtphost = $this->f3->get('SMTP_HOST'); /*the SMTP_parameters ared defined in config.ini */
         $smtpmode = $this->f3->get('SMTP_MODE');
         $smtpport = $this->f3->get('SMTP_PORT');
@@ -69,7 +67,7 @@ class AuthModel extends Model {
         $smtp->set('Content-type', 'text/html; charset=iso-8859-1');
         $siteroot = $this->f3->get('SITEROOT');
         $message = $this->f3->get('ACTIVATIONEMAIL');
-        $link = '<a href='.$siteroot.'/user/activate/'.$accounttype.'/'.$email.'/'.$key.'>Click here to activate account!</a>';
+        $link = '<a href='.$siteroot.'/activate/'.$accounttype.'/'.$email.'/'.$key.'>Click here to activate account!</a>';
         $smtp->send($message.'<center><h3>'.$link.'</h3></center>'.'<center><h3>'.$key.'</h3></center>');
         //echo '<pre>'.$smtp->log().'</pre>';
     }
