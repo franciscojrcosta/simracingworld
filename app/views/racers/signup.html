@@ -66,7 +66,7 @@
                 }
             };
 
-            xhr.open('get', '/user/racers/checkemail/'+email);
+            xhr.open('get', '/racers/auth/checkemail/'+email);
             xhr.send();
         }
         </script>

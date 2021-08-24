@@ -33,6 +33,11 @@ class AuthCtrl extends Controller {
             case 'racers':
                 $authracers = new AuthRacers();
                 $authracers->activate($email, $key);
+                if($authracers->raceractive == true){
+                    echo $this->template->render('activateconfirm.html');
+                } else {
+                    echo $this->template->render('activatenegative.html');
+                }
                 break;
             case 'teams':
                 echo 'Teams activation';

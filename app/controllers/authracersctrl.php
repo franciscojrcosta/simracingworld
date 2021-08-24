@@ -57,4 +57,21 @@ class AuthRacersCtrl extends AuthCtrl {
         echo $this->template->render('activate.html');
     }
     
+        /**
+     * Checks if the e-mail exists in the database
+     * send text response to XMLHttpRequest that comes from signup.html
+     * echo FALSE if e-mail is not found in DB
+     * echo TRUE if e-mail is found in DB
+     */
+    public function checkRacerEmail() {
+        $racermodel = new RacersModel();
+        $email = $this->f3->get('PARAMS.email');
+        $racerdata = $racermodel->getByEmail($email);
+        if ($racerdata == false) {
+            echo 'FALSE';
+        } else {
+            echo 'TRUE';
+        }
+    }
+    
 }

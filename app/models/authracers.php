@@ -25,6 +25,7 @@
 class AuthRacers extends AuthModel {
 
     public $validlogin;
+    public $raceractive;
     protected $racersdata; // DB table object for racers
 
     public function __construct() {
