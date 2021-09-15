@@ -69,6 +69,8 @@ class RacersCtrl extends Controller {
             $this->goToIndex(); //!render the main page
         } else {
             $this->f3->set('sessionid', $_SESSION['id']);
+            $this->f3->set('sessionuser', $_SESSION['user']);
+            $this->f3->set('timedate', date("d-M-Y H:i:s"));
             echo $this->template->render('dashboard.html');
         }
     }
@@ -95,7 +97,9 @@ class RacersCtrl extends Controller {
             $this->f3->set('sessionid', $_SESSION['id']);
             $this->f3->set('user', $_SESSION['user']);
             $this->f3->set('type', $_SESSION['type']);
-            echo $this->template->render('sponsors.html');
+            $sponsors = new SponsorsModel();
+
+            //echo $this->template->render('sponsors.html');
         }
     }
 
