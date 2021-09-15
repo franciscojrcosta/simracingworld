@@ -32,10 +32,12 @@ class SponsorsModel extends Model {
     public $startdate;
     public $enddate;
     public $contractvalue;
+    public $sponsorlist;
 
     public function __construct() {
         parent::__construct();
         $this->mapDb();
+        $this->listAllSponsors();
     }
 
     /**
@@ -45,9 +47,21 @@ class SponsorsModel extends Model {
         $sponsorsdata = new DB\SQL\Mapper($this->srwdatabase, 'sponsors');
         $this->sponsorsdata = $sponsorsdata;
     }
-    
-    
-    
-    
+
+    protected function getSponsorConfig() {
+        
+    }
+
+    protected function listAllSponsors() {
+        
+        $teste = $this->sponsorsdata->load();
+        $teste2 = $this->sponsorsdata->next();
+        print_r($teste);
+        echo'<p>'.$teste->brandname.'</p>';
+        echo '<p>';
+        print_r($teste2);
+        echo('</p>');
+        
+    }
 
 }
