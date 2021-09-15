@@ -1,6 +1,6 @@
 /* TABLE RACERS */
 CREATE TABLE IF NOT EXISTS racers (
-    racerID INT NOT NULL AUTO_INCREMENT = 512000000;
+    racerID INT NOT NULL AUTO_INCREMENT;
     email VARCHAR(254),
     password VARCHAR(254),
     firstname VARCHAR(254),
@@ -27,6 +27,38 @@ CREATE TABLE IF NOT EXISTS racers (
     UNIQUE KEY (email),
     PRIMARY KEY (racerID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/* TABLE SPONSOSRS */
+CREATE TABLE IF NOT EXISTS sponsors (
+    sponsorID INT NOT NULL AUTO_INCREMENT,
+    brandname VARCHAR(254),
+    logo VARCHAR(254),
+    totalvalue INT,
+    ncontracts INT,
+    avgvalue INT as (totalvalue / ncontracts),
+    PRIMARY KEY (sponsorID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/* TABLE LICENSES */
+CREATE TABLE IF NOT EXISTS licenses (
+    licenseID INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(32),
+    dailyprice INT,
+    PRIMARY KEY(licenseID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*  TABLE LICENSECTR */
+CREATE TABLE IF NOT EXISTS licensectr (
+    racinglicenseID INT NOT NULL AUTO_INCREMENT,
+    license INT,
+    racer VARCHAR,
+    startdate DATE,
+    enddate DATE,
+    PRIMARY KEY (racinglicenseID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
 
 CREATE TABLE IF NOT EXISTS settings (
     settingsID INT NOT NULL AUTO_INCREMENT,
@@ -90,13 +122,6 @@ CREATE TABLE IF NOT EXISTS organizations (
     PRIMARY KEY (organizationID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS sponsors (
-    sponsorID INT NOT NULL AUTO_INCREMENT,
-    brandname VARCHAR(254),
-    logo VARCHAR(254),
-    PRIMARY KEY (sponsorID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE IF NOT EXISTS sponsorsctr (
     sponsorsctrID INT NOT NULL AUTO_INCREMENT,
     sponsorID INT,
@@ -110,18 +135,17 @@ CREATE TABLE IF NOT EXISTS sponsorsctr (
     PRIMARY KEY(sponsorsctrID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS licenses (
-    licenseID INT NOT NULL,
+CREATE TABLE IF NOT EXISTS championships (
+    championshipID INT NOT NULL AUTO_INCREMENT,
+    organizationid INT,
     description VARCHAR(254),
-    dailyprice INT,
-    PRIMARY KEY(licenseID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS licensectr (
-    racinglicenseID INT NOT NULL AUTO_INCREMENT,
-    license INT,
-    racer INT,
     startdate DATE,
     enddate DATE,
-    PRIMARY KEY (racinglicenseID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    status, /* published, online, finished */ 
+    registrationend DATE,
+    simulator VARCHAR(254),
+    licenseid INT,
+    entryfee INT,
+    maxdrivers INT,
+    
+)
