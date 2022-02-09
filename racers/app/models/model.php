@@ -25,7 +25,7 @@
 class Model {
 
     protected $f3;          //! Framework Instance
-    protected $srwdatabase; //! Database Instance
+    protected $appdatabase; //! Database Instance
     protected $template;    //! Template Instance
     protected $dbdata;      //! Table Object
 
@@ -45,7 +45,7 @@ class Model {
      * Maps database table racers to object racersdata
      */
     protected function mapDB() {
-        $dbdata = new DB\SQL\Mapper($this->srwdatabase, 'racers');
+        $dbdata = new DB\SQL\Mapper($this->appdatabase, 'racers');
         $this->dbdata = $dbdata;
     }
 
@@ -54,13 +54,13 @@ class Model {
      * SYSDB, DBUSERNAME, DBPASSWORD are in the config.ini
      */
     protected function connectMySQL() {
-        $srwdatabase = new DB\SQL(
+        $appdatabase = new DB\SQL(
                 $this->f3->get('SYSDB'), //key SYSDB is at config.ini
                 $this->f3->get('DBUSERNAME'), //key DBUSERNAME is at config.ini
                 $this->f3->get('DBPASSWORD')); //key DBPASSWORD is at config.ini
-        $this->srwdatabase = $srwdatabase;
+        $this->appdatabase = $appdatabase;
     }
-    
+
     /**
      * gets data from database 
      */
@@ -72,6 +72,22 @@ class Model {
         } else {
             return $this->dbdata;
         }
+    }
+
+    /**
+     * Encrypts a given password
+     * @param string $password original password to be encrypted
+     * @return string $hashedpassword password after encryption
+     */
+    public function encryptPassword($password) {
+        $this->hashedpassword = password_hash($password, PASSWORD_DEFAULT);
+        return $this->hashedpassword;
+    }
+    
+    public function setNewPassword($password) {  
+        $password = $this->encryptPassword($password);
+        $this->dbdata->password = $password;
+        $this->dbdata->save();
     }
 
 }

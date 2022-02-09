@@ -47,13 +47,22 @@ class AuthController extends Controller {
         echo $this->template->render('forgotpass.html');
     }
 
+    public function forgotPass() {
+        $password = $this->authmodel->randomString();
+        $email = filter_input(INPUT_POST, 'email');
+        $this->authmodel->sendNewPassword($email, $password);
+        $this->authmodel->getByEmail($email);
+        $this->authmodel->setNewPassword($password);
+        echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
+    }
+
     /**
      * Registers new racer in database
      */
     public function doSignup() {
         $signup = new SignupModel();
         $signup->initSignup();
-        echo $this->template->render('activate.html');
+        echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
     }
 
     /**
@@ -88,5 +97,5 @@ class AuthController extends Controller {
     public function showSignup() {
         echo $this->template->render('signup.html');
     }
-    
+
 }

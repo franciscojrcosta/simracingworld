@@ -46,7 +46,7 @@ class Views extends Controller {
             $this->validsession = false;
         } else {
             $this->f3->set('sessionid', $_SESSION['id']);
-            $this->f3->set('sessionuser', $_SESSION['user']);
+            $this->f3->set('username', $_SESSION['user']);
             $this->f3->set('timedate', date("d-M-Y H:i:s"));
             $this->validsession = true;
         }
@@ -57,7 +57,7 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-            $this->template->render('dashboard.html');
+            echo $this->template->render('dashboard.html');
         }
     }
 
@@ -68,7 +68,7 @@ class Views extends Controller {
             echo 'Mailbox';
         }
     }
-    
+
     public function licenses() {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
@@ -84,15 +84,15 @@ class Views extends Controller {
             echo 'TEAMS';
         }
     }
-    
+
     public function sponsors() {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-            echo 'Sponsors';
+            echo $this->template->render('sponsors.html');
         }
     }
-    
+
     public function finances() {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
@@ -100,7 +100,7 @@ class Views extends Controller {
             echo 'FINANCES';
         }
     }
-    
+
     public function championships() {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
@@ -108,7 +108,7 @@ class Views extends Controller {
             echo 'CHAMPIONSHIPS';
         }
     }
-    
+
     public function profile() {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
@@ -116,7 +116,7 @@ class Views extends Controller {
             echo 'PROFILE';
         }
     }
-    
+
     public function logout() {
         session_destroy();
         echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';

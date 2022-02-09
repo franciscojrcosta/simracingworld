@@ -22,6 +22,7 @@ class Controller {
 
     protected $f3;          //! fat-free framework instance
     protected $template;    //! template instance
+    protected $model;
     protected $authmodel;
     protected $validsession;
 

@@ -21,19 +21,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="The SimRacing Management">
         <meta name="author" content="Francisco Costa">
-        <meta name="application-name" content="{{@myappname}} {{@myappversion}}">
-        <title>{{@myappname}} {{@myappversion}}</title>
+        <meta name="application-name" content="<?= ($myappname) ?> <?= ($myappversion) ?>">
+        <title><?= ($myappname) ?> <?= ($myappversion) ?></title>
 
         <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
 
-        <link href="{{@BASE}}/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="{{@BASE}}/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <link href="<?= ($BASE) ?>/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="<?= ($BASE) ?>/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
         <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
-        <link href="{{@BASE}}/styles/fontawesome/css/fontawesome.css" rel="stylesheet">
-        <link href="{{@BASE}}/styles/fontawesome/css/brands.css" rel="stylesheet">
-        <link href="{{@BASE}}/styles/fontawesome/css/solid.css" rel="stylesheet">
+        <link href="<?= ($BASE) ?>/styles/fontawesome/css/fontawesome.css" rel="stylesheet">
+        <link href="<?= ($BASE) ?>/styles/fontawesome/css/brands.css" rel="stylesheet">
+        <link href="<?= ($BASE) ?>/styles/fontawesome/css/solid.css" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {
@@ -56,7 +56,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <!-- NAVIGATION MENU -->
         <div>
-            <include href="nav.html" />
+            <?php echo $this->render('nav.html',NULL,get_defined_vars(),0); ?>
         </div>
 
         <!-- MAIN -->
@@ -132,7 +132,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <!-- FOOTER -->
         <div>
-            <include href="footer.html" />
+            <?php echo $this->render('footer.html',NULL,get_defined_vars(),0); ?>
         </div>
     </body>
 </html>

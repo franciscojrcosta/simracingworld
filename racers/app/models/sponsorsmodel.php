@@ -52,8 +52,7 @@ class SponsorsModel extends Model {
         
     }
 
-    protected function listAllSponsors() {
-        
+    protected function listAllSponsors() {        
         $teste = $this->sponsorsdata->load();
         $teste2 = $this->sponsorsdata->next();
         print_r($teste);
@@ -61,7 +60,6 @@ class SponsorsModel extends Model {
         echo '<p>';
         print_r($teste2);
         echo('</p>');
-        
     }
 
 }

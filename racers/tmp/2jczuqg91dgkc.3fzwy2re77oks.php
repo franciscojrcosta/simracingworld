@@ -48,7 +48,7 @@
         }
         
         //send a XMLHttpRequest to check if e-mail exists in DB
-        function checkEmail() {F
+        function checkEmail() {
             var email = document.getElementById("inputEmail").value;
             xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {

@@ -42,16 +42,6 @@ class AuthModel extends Model {
     }
 
     /**
-     * Encrypts a given password
-     * @param string $password original password to be encrypted
-     * @return string $hashedpassword password after encryption
-     */
-    public function encryptPassword($password) {
-        $this->hashedpassword = password_hash($password, PASSWORD_DEFAULT);
-        return $this->hashedpassword;
-    }
-
-    /**
      * @param string $accounttype account can be for a racer, a team or organization
      * @param string $email the email of the account to be activated
      * @param string $key the generated key to activate account
@@ -73,7 +63,7 @@ class AuthModel extends Model {
         $smtp->set('Content-type', 'text/html; charset=iso-8859-1');
         $siteroot = $this->f3->get('SITEROOT');
         $message = $this->f3->get('ACTIVATIONEMAIL');
-        $link = '<a href=' . $siteroot . 'racers/activate/' . $email . '/' . $key . '>Click here to activate account!</a>';
+        $link = '<a href=' . $siteroot . '/racers/activate/' . $email . '/' . $key . '>Click here to activate account!</a>';
         $smtp->send($message . '<center><h3>' . $link . '</h3></center>' . '<center><h3>' . $key . '</h3></center>');
         //echo '<pre>'.$smtp->log().'</pre>';
     }
@@ -133,4 +123,44 @@ class AuthModel extends Model {
         unset($this->dbdata);
     }
 
+     /**
+     * generates a random string to be used as recovery password
+     * @return string
+     */
+    public function randomString() {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < 10; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $randomString .= $characters[$index];
+        }
+        return $randomString;
+    }
+    
+    /**
+     * @param string $accounttype account can be for a racer, a team or organization
+     * @param string $email the email of the account to be activated
+     * @param string $key the generated key to activate account
+     * sends an e-mail to the destination with the activation key
+     */
+    public function sendNewPassword($email, $password) {
+        $smtphost = $this->f3->get('SMTP_HOST'); /* the SMTP_parameters ared defined in config.ini */
+        $smtpmode = $this->f3->get('SMTP_MODE');
+        $smtpport = $this->f3->get('SMTP_PORT');
+        $smtpuser = $this->f3->get('SMTP_USER');
+        $smtppass = $this->f3->get('SMTP_PASS');
+        $smtpfrom = $this->f3->get('SMTP_FROM');
+        $smtperrs = $this->f3->get('SMTP_ERRS');
+        $smtp = new SMTP($smtphost, $smtpport, $smtpmode, $smtpuser, $smtppass);
+        $smtp->set('Errors-to', $smtperrs);
+        $smtp->set('To', $email);
+        $smtp->set('From', $smtpfrom);
+        $smtp->set('Subject', 'SimRacingWorld Password Reset');
+        $smtp->set('Content-type', 'text/html; charset=iso-8859-1');
+        $siteroot = $this->f3->get('SITEROOT');
+        $message = $this->f3->get('PASSRESETEMAIL');
+        $smtp->send($message . '<center><h3>' . $password . '</h3></center>');
+        //echo '<pre>'.$smtp->log().'</pre>';
+    }
+    
 }
