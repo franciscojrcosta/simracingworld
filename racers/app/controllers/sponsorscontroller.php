@@ -22,7 +22,7 @@
  *
  * @author franc
  */
-class Sponsors extends Controller {
+class SponsorsController extends Controller {
     
     protected $sponsormodel;
     
@@ -42,5 +42,9 @@ class Sponsors extends Controller {
         echo '<p>contract start '.$this->sponsormodel->startdate.'</p>';
         echo '<p>contract end '.$this->sponsormodel->enddate.'</p>';
     }
-        
+    
+    public function listSponsors(){
+        print_r($this->sponsormodel->sponsorlist);
+    }
+    
 }

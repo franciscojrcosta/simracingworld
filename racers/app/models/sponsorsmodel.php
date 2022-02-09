@@ -55,11 +55,7 @@ class SponsorsModel extends Model {
     protected function listAllSponsors() {        
         $teste = $this->sponsorsdata->load();
         $teste2 = $this->sponsorsdata->next();
-        print_r($teste);
-        echo'<p>'.$teste->brandname.'</p>';
-        echo '<p>';
-        print_r($teste2);
-        echo('</p>');
+        $this->sponsorlist = $teste2;
     }
 
 }

@@ -20,7 +20,8 @@
 class Views extends Controller {
 
     protected $page;
-
+    protected $sponsorcontroller;
+    
     public function beforeroute() {
         session_start();
     }
@@ -89,7 +90,9 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-            echo $this->template->render('sponsors.html');
+           // $sponsorcontroller = new Sponsors;
+           // $sponsorcontroller->listSponsors();
+           echo $this->template->render('sponsors.html');
         }
     }
 
