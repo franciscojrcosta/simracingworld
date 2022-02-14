@@ -37,25 +37,38 @@ class SponsorsModel extends Model {
     public function __construct() {
         parent::__construct();
         $this->mapDb();
-        $this->listAllSponsors();
+        $this->getAll();
     }
 
     /**
      * Maps database table racers to object racersdata
      */
     protected function mapDb() {
-        $sponsorsdata = new DB\SQL\Mapper($this->srwdatabase, 'sponsors');
+        $sponsorsdata = new DB\SQL\Mapper($this->appdatabase, 'sponsors');
         $this->sponsorsdata = $sponsorsdata;
     }
 
-    protected function getSponsorConfig() {
+    protected function getAll() {
+        $this->sponsorsdata->load();
+        $pos = 0;
+        while ($this->sponsorsdata->dry() == false) {
+            $this->sponsorlist[$pos] = array(
+                'brandname' => $this->sponsorsdata->brandname,
+                'logo' => $this->sponsorsdata->logo);
+            $this->sponsorsdata->next();
+            $pos++;
+        }
+    }
+
+    protected function getOne() {
         
     }
 
-    protected function listAllSponsors() {        
-        $teste = $this->sponsorsdata->load();
-        $teste2 = $this->sponsorsdata->next();
-        $this->sponsorlist = $teste2;
+    protected function getXRandomly(){
+        
     }
-
+    
+    protected function getCurrent(){
+        
+    }
 }

@@ -23,28 +23,36 @@
  * @author franc
  */
 class SponsorsController extends Controller {
-    
+
     protected $sponsormodel;
-    
+
     public function __construct() {
         parent::__construct();
         $this->sponsormodel = new SponsorsModel();
     }
-    
-    public function index(){
+
+    public function index() {
         echo $this->template->render('racers/sponsor.html');
     }
+
+    public function listAll() {
+        print_r($this->sponsormodel->sponsorlist);
+    }
+
+    public function listOne() {
+        
+    }
     
+    public  function listCurrent(){
+        
+    }
+
     public function contract() {
         $this->sponsormodel->generateContractValue();
         $this->sponsormodel->generateContractDays();
-        echo '<p>contract value '.$this->sponsormodel->contractvalue.'</p>';
-        echo '<p>contract start '.$this->sponsormodel->startdate.'</p>';
-        echo '<p>contract end '.$this->sponsormodel->enddate.'</p>';
+        echo '<p>contract value ' . $this->sponsormodel->contractvalue . '</p>';
+        echo '<p>contract start ' . $this->sponsormodel->startdate . '</p>';
+        echo '<p>contract end ' . $this->sponsormodel->enddate . '</p>';
     }
-    
-    public function listSponsors(){
-        print_r($this->sponsormodel->sponsorlist);
-    }
-    
+
 }

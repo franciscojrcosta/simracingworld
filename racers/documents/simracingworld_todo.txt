@@ -1,4 +1,15 @@
 TODO
+
+INITITAL task for the system
+- load in sponsors table
+- load in settings table
+- load in licenses table
+
+EVERYDAY DAY CRON JOBS
+- mark inactive overdue sponsor contracts
+- mark inactive driver contracts
+- delete overdue license contracts
+
 ____________________________
 
 Admin Panel

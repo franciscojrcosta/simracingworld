@@ -90,9 +90,9 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-           // $sponsorcontroller = new Sponsors;
-           // $sponsorcontroller->listSponsors();
-           echo $this->template->render('sponsors.html');
+            $this->sponsorcontroller = new SponsorsController;
+            $this->sponsorcontroller->listAll();
+           //echo $this->template->render('sponsors.html');
         }
     }
 
