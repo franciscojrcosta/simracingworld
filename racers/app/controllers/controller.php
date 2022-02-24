@@ -45,7 +45,10 @@ class Controller {
             session_start();
             $_SESSION['id'] = session_id();
             $_SESSION['user'] = $this->authmodel->username;
+            $_SESSION['email'] = $this->authmodel->email;
+            $this->f3->set('sessionid', $_SESSION['id']);
             $this->f3->set('username', $_SESSION['user']);
+            $this->f3->set('email', $_SESSION['email']);
             $this->f3->set('timedate', date('d-m-Y H:m:s'));
             echo $this->template->render('dashboard.html'); //open dashboard
         }

@@ -113,6 +113,10 @@
                                                 <input class="form-control py-4" id="inputBirthDate" name="birthdate" required type="date" />
                                             </div>
                                             <div class="form-group">
+                                                <label class="small mb-1" for="fileToUpload"><?= ($photo) ?> .png .jpg</label>
+                                                <input class="form-control py-4" accept=".png,.jpg,." type="file" id="imageToUpload" name="imagetoupload"/>
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="small mb-1" for="inputNationality"><?= ($nationality) ?></label>
                                                 <select class="form-control py-4" id="inputNationality" name="nationality">
                                                     <option value="AF">Afghanistan</option>

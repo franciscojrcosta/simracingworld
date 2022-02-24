@@ -21,7 +21,8 @@ class Views extends Controller {
 
     protected $page;
     protected $sponsorcontroller;
-    
+    protected $profilecontroller;
+
     public function beforeroute() {
         session_start();
     }
@@ -48,6 +49,7 @@ class Views extends Controller {
         } else {
             $this->f3->set('sessionid', $_SESSION['id']);
             $this->f3->set('username', $_SESSION['user']);
+            $this->f3->set('email', $_SESSION['email']);
             $this->f3->set('timedate', date("d-M-Y H:i:s"));
             $this->validsession = true;
         }
@@ -90,9 +92,9 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-            $this->sponsorcontroller = new SponsorsController;
+            $this->sponsorcontroller = new SponsorController;
             $this->sponsorcontroller->listAll();
-           //echo $this->template->render('sponsors.html');
+            //echo $this->template->render('sponsors.html');
         }
     }
 
@@ -116,7 +118,8 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-            echo 'PROFILE';
+            
+            echo $this->template->render('profile.html');
         }
     }
 

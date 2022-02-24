@@ -61,7 +61,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <!-- MAIN -->
         <div class="container">
             <div class="mb-3">
-                Current License
+                <p>Username: {{@username}}</p>
+                <p>SessionID {{@sessionid}}</p>
+                <p>E-mail: {{@email}}</p>
+                
+                <image src="/assets/drivers/generic.jpg" class="rounded-circle" style="width:60px; height:60px" alt="driver picture">
                 
             </div>
             <div>
@@ -69,13 +73,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             </div>
             
             LICENSE - TODO write content
-            <div><p>{{@sessionid}}</div>
+            <div><p>{{@sessionid}}</p></div>
         
         </div>
         
         <!-- FOOTER -->
         <div>
-            <include href="footer.html" />
+            <include href="footer.html" /> 
         </div>
     </body>
 </html>

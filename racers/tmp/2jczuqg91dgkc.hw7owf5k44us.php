@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (C) 2021 {{@myappname}} {{@myappversion}} by Francisco Costa
+Copyright (C) 2021 <?= ($myappname) ?> <?= ($myappversion) ?> by Francisco Costa
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="The SimRacing Management">
         <meta name="author" content="Francisco Costa">
-        <meta name="application-name" content="{{@myappname}} {{@myappversion}}">
-        <title>{{@myappname}} {{@myappversion}}</title>
+        <meta name="application-name" content="<?= ($myappname) ?> <?= ($myappversion) ?>">
+        <title><?= ($myappname) ?> <?= ($myappversion) ?></title>
 
         <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
@@ -55,13 +55,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         
         <!-- NAVIGATION MENU -->
         <div>
-            <include href="nav.html" />
+            <?php echo $this->render('nav.html',NULL,get_defined_vars(),0); ?>
         </div>
         
         <!-- MAIN -->
         <div class="container">
             <div class="mb-3">
-                Current License
+                <p>Username: <?= ($username) ?></p>
+                <p>SessionID <?= ($sessionid) ?></p>
+                <p>E-mail: <?= ($email) ?></p>
+
+                <image src="/assets/drivers/generic.jpg" class="rounded-circle" style="width:60px; height:60px" alt="driver picture">
                 
             </div>
             <div>
@@ -69,13 +73,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             </div>
             
             LICENSE - TODO write content
-            <div><p>{{@sessionid}}</div>
+            <div><p><?= ($sessionid) ?></p></div>
         
         </div>
         
         <!-- FOOTER -->
         <div>
-            <include href="footer.html" />
+            <?php echo $this->render('footer.html',NULL,get_defined_vars(),0); ?> 
         </div>
     </body>
 </html>
