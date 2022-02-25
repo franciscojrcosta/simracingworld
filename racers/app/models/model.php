@@ -38,14 +38,14 @@ class Model {
         $this->f3 = $f3;
         $this->template = new Template();
         $this->connectMySQL();
-        $this->mapDB();
+        $this->mapDbTable('racers');
     }
 
     /**
      * Maps database table racers to object racersdata
      */
-    protected function mapDB() {
-        $dbdata = new DB\SQL\Mapper($this->appdatabase, 'racers');
+    protected function mapDbTable($dbtable) {
+        $dbdata = new DB\SQL\Mapper($this->appdatabase, $dbtable);
         $this->dbdata = $dbdata;
     }
 

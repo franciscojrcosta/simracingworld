@@ -22,23 +22,16 @@
  *
  * @author franc
  */
-class SponsorModel extends Model {
+class ProfileModel extends Model {
 
-    protected $sponsordata; //! Database object for table Sponsorso
-    protected $minvalue;
-    protected $maxvalue;
-    protected $minmonths;
-    protected $maxmonths;
-    public $startdate;
-    public $enddate;
-    public $contractvalue;
-    public $sponsorlist;
+    protected $profiledata; //! Database object for database table
+
 
     public function __construct() {
         parent::__construct();
-        $this->mapDbTable('sponsors');
-        $this->sponsordata = $this->dbdata;
-        $this->getAll();    
+        $this->mapDbTable('racers');
+        $this->profiledata = $this->dbdata;
+        //$this->getAll();
     }
 
     protected function getAll() {

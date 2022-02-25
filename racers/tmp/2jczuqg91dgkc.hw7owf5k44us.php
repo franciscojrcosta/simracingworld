@@ -64,7 +64,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 <p>Username: <?= ($username) ?></p>
                 <p>SessionID <?= ($sessionid) ?></p>
                 <p>E-mail: <?= ($email) ?></p>
-
+                
                 <image src="/assets/drivers/generic.jpg" class="rounded-circle" style="width:60px; height:60px" alt="driver picture">
                 
             </div>

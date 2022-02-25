@@ -118,7 +118,7 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-            
+            $this->profilecontroller = new ProfileController();
             echo $this->template->render('profile.html');
         }
     }
