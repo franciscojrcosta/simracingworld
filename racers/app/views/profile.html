@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (C) 2021 {{@myappname}} {{@myappversion}} by Francisco Costa
+Copyright (C) 2021 {{@lang_myappname}} {{@lang_myappversion}} by Francisco Costa
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="The SimRacing Management">
         <meta name="author" content="Francisco Costa">
-        <meta name="application-name" content="{{@myappname}} {{@myappversion}}">
-        <title>{{@myappname}} {{@myappversion}}</title>
+        <meta name="application-name" content="{{@lang_myappname}} {{@lang_myappversion}}">
+        <title>{{@lang_myappname}} {{@lang_myappversion}}</title>
 
         <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
@@ -52,31 +52,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     </head>
     <body>
-        
+
         <!-- NAVIGATION MENU -->
         <div>
             <include href="nav.html" />
         </div>
-        
+
         <!-- MAIN -->
-        <div class="container">
-            <div class="mb-3">
-                <p>Username: {{@username}}</p>
-                <p>SessionID {{@sessionid}}</p>
-                <p>E-mail: {{@email}}</p>
-                
-                <image src="/assets/drivers/generic.jpg" class="rounded-circle" style="width:60px; height:60px" alt="driver picture">
-                
+        <div class="container py-3">
+            <div class="row align-items-start">
+                <div class="col">
+                    <image src="{{@DRIVERSIMG}}{{@profiledata['photo']}}" class="rounded" alt="driver picture">
+                </div>
+                <div class="col">
+                    <h3>{{@profiledata['firstname']}} {{@profiledata['middlename']}} {{@profiledata['lastname']}}</h3>
+                    <p>{{@profiledata['nationality']}}
+                        <image src="{{@FLAGSIMG}}{{@profiledata['flag']}}" class="rounded" style="width:5%; height:5%" alt="flag">
+                    </p>
+                    <p>{{@profiledata['email']}}</p>
+                    <p>{{@profiledata['birthdate']}}</p>    
+                </div>                
             </div>
-            <div>
-                <label>Get a new license</label>
-            </div>
-            
-            LICENSE - TODO write content
-            <div><p>{{@sessionid}}</p></div>
-        
+
+            <div class="row align-items-start">
+                <div class="col">
+                    <form name="imageUpload" action="uploadfile.php" method="post" enctype="multipart/form-data">
+                        <div>
+                            <label for="formFile" class="form-label">{{@lang_photo}}</label>
+                            <input class="form-control" type="file" id="formFile" accept="image/*;capture=camera">
+                            <input type="submit">
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+                    <p>{{@profiledata['birthdate']}}</p>    
+                </div>                
+            </div>    
+
         </div>
-        
         <!-- FOOTER -->
         <div>
             <include href="footer.html" /> 

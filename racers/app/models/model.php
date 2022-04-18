@@ -42,7 +42,8 @@ class Model {
     }
 
     /**
-     * Maps database table racers to object racersdata
+     * Maps database table to object $dbdata
+     * $dbtable is the name of database table to be mapped
      */
     protected function mapDbTable($dbtable) {
         $dbdata = new DB\SQL\Mapper($this->appdatabase, $dbtable);
@@ -84,6 +85,10 @@ class Model {
         return $this->hashedpassword;
     }
     
+    /**
+     * Save the new encrypted password in to database
+     * @param type $password
+     */
     public function setNewPassword($password) {  
         $password = $this->encryptPassword($password);
         $this->dbdata->password = $password;

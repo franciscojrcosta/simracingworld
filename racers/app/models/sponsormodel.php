@@ -41,6 +41,9 @@ class SponsorModel extends Model {
         $this->getAll();    
     }
 
+    /**
+     * Loads all sponsor data in to sponsordata
+     */
     protected function getAll() {
         $this->sponsordata->load();
         $pos = 0;

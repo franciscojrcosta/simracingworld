@@ -27,63 +27,63 @@
                 <li class="nav-item">
                     <a href="dashboard" class="nav-link link-dark">
                         <i class="fas fa-laptop-house"></i>
-                        <?= ($dashboard)."
+                        <?= ($lang_dashboard)."
 " ?>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="mailbox" class="nav-link link-dark">
                         <i class="fas fa-envelope"></i>
-                        <?= ($mailbox)."
+                        <?= ($lang_mailbox)."
 " ?>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="licenses" class="nav-link link-dark">
                         <i class="fas fa-id-card"></i>
-                        <?= ($licenses)."
+                        <?= ($lang_licenses)."
 " ?>
                     </a>
                 </li>  
                 <li class="nav-item">
                     <a href="teams" class="nav-link link-dark">
                         <i class="fas fa-warehouse"></i>
-                        <?= ($teams)."
+                        <?= ($lang_teams)."
 " ?>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="sponsors" class="nav-link link-dark">
                         <i class="fas fa-comments-dollar"></i>
-                        <?= ($sponsors)."
+                        <?= ($lang_sponsors)."
 " ?>
                     </a>
                 </li>  
                 <li class="nav-item">
                     <a href="finances" class="nav-link link-dark">
                         <i class="fas fa-chart-pie"></i>
-                        <?= ($finances)."
+                        <?= ($lang_finances)."
 " ?>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="championships" class="nav-link link-dark">
                         <i class="fas fa-trophy"></i>
-                        <?= ($championships)."
+                        <?= ($lang_championships)."
 " ?>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="profile" class="nav-link link-dark">
                         <i class="fas fa-user-cog"></i>
-                        <?= ($profile)."
+                        <?= ($lang_profile)."
 " ?>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="logout" class="nav-link link-dark">
                         <i class="fas fa-power-off"></i>
-                        <?= ($logout)."
+                        <?= ($lang_logout)."
 " ?>
                     </a>
                 </li>      

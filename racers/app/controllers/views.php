@@ -30,19 +30,16 @@ class Views extends Controller {
     public function afterroute() {
         //echo '- After routing';
     }
-
-    /* DEPRECATED
-      public function viewMain() {
-      echo $this->template->render('main.html');
-      }
-
-      DEPRECATED
-      public function viewPage() {
-      $this->page = $this->f3->get('PARAMS.page');
-      echo $this->template->render($this->page . '.html');
-      }
+    
+    /**
+     * Return true if session is set
+     * Sets global F3 framework variables
+     * variable sessionid
+     * variable username
+     * variable email
+     * variable timeanddate
+     * @return type
      */
-
     private function checkSession() {
         if (!isset($_SESSION['id'])) {
             $this->validsession = false;
@@ -118,7 +115,9 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
+            $email = $this->f3->get('email');
             $this->profilecontroller = new ProfileController();
+            $this->f3->set('profiledata', $this->profilecontroller->profiledata);
             echo $this->template->render('profile.html');
         }
     }

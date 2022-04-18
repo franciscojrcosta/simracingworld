@@ -30,14 +30,14 @@ CREATE TABLE IF NOT EXISTS racers (
     simulators VARCHAR(254),
     sponsorslots INT,
     bankroll DECIMAL(11,2),
-    skill INT,
-    attacking INT,
-    defending INT,
-    reliability INT,
-    teamplayer INT,
-    fairplay INT,
-    knowledge INT,
+    skill INT, /* overal skill from 0 to 10 */
+    attacking INT, /* hability to attack and overtake */
+    defending INT, /* hability to defend position */
+    consistency INT, /* how consistent he drives, no accidents */
+    teamplayer INT, /* relationship with team members and order compliance */
+    knowledge INT, /* technical knowledge on car setup */
     evalcounter INT,
+    rankingpoints INT,
     activationkey VARCHAR(32),
     active BOOLEAN,
     UNIQUE KEY (email),

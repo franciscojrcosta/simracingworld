@@ -24,37 +24,35 @@
  */
 class ProfileModel extends Model {
 
-    protected $profiledata; //! Database object for database table
-
+    public $profiledata; //! Database object for database table
+    protected $email;
 
     public function __construct() {
         parent::__construct();
         $this->mapDbTable('racers');
         $this->profiledata = $this->dbdata;
-        //$this->getAll();
+        $this->email = $this->f3->get('email');
+        $this->getCurrentProfile();
     }
-
-    protected function getAll() {
-        $this->sponsordata->load();
-        $pos = 0;
-        while ($this->sponsordata->dry() == false) {
-            $this->sponsorlist[$pos] = array(
-                'brandname' => $this->sponsordata->brandname,
-                'logo' => $this->sponsordata->logo);
-            $this->sponsordata->next();
-            $pos++;
-        }
+    
+    /**
+     * Get the data for the current profile by the e-mail
+     * email is set in f3 global variable email in the views.php in checkSession
+     */
+    protected function getCurrentProfile() {
+        $this->profiledata->load(array('email=?', $this->email));
     }
 
     protected function getOne() {
         
     }
 
-    protected function getXRandomly(){
+    protected function getXRandomly() {
         
     }
-    
-    protected function getCurrent(){
+
+    protected function getCurrent() {
         
     }
+
 }

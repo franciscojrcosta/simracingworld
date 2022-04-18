@@ -111,6 +111,12 @@ class AuthModel extends Model {
         return $this->validlogin;
     }
 
+    /**
+     * Activates the user account by setting
+     * the active in the db to true
+     * @param type $email
+     * @param type $key
+     */
     public function activate($email, $key) {
         $this->dbdata->load(array('email=?', $email));
         if ($this->dbdata->activationkey == $key) {
