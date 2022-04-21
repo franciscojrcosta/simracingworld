@@ -80,23 +80,23 @@ class AuthModel extends Model {
         $this->password = filter_input(INPUT_POST, 'password');
         $this->dbdata->load(array('email=?', $this->email));
         if ($this->dbdata->dry()) { // Check if there is any data loaded in racersdata
-            $this->f3->set('loginMsg1', 'User does not exist. Register or try again!');
-            $this->f3->set('loginMsg2', null);
+            $this->f3->set('lang_loginMsg1', 'User does not exist. Register or try again!');
+            $this->f3->set('lang_loginMsg2', null);
             $this->f3->set('loginError', true);
             $this->validlogin = false;
             echo $this->template->render('login.html');
         }
         $this->passcheck = password_verify($this->password, $this->dbdata->password); // Checks the password
         if ($this->passcheck == false) {
-            $this->f3->set('loginMsg1', null);
-            $this->f3->set('loginMsg2', 'Incorrect password. Try again!');
+            $this->f3->set('lang_loginMsg1', null);
+            $this->f3->set('lang_loginMsg2', 'Incorrect password. Try again!');
             $this->f3->set('loginError', true);
             $this->validlogin = false;
             echo $this->template->render('login.html');
         }
         if ($this->dbdata->active == false) { // checks if racer is active
-            $this->f3->set('loginMsg1', 'Your account is not active, please check your e-mail to activate account!');
-            $this->f3->set('loginMsg2', null);
+            $this->f3->set('lang_loginMsg1', 'Your account is not active, please check your e-mail to activate account!');
+            $this->f3->set('lang_loginMsg2', null);
             $this->f3->set('loginError', true);
             $this->validlogin = false;
             echo $this->template->render('login.html');

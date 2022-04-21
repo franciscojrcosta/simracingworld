@@ -52,27 +52,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     </head>
     <body>
-        
+
         <!-- NAVIGATION MENU -->
         <div>
             <include href="nav.html" />
         </div>
-        
+
         <!-- MAIN -->
         <div class="container">
-            <div class="mb-3">
-                Current License
+            <form>
+                <fieldset class="form-group border p-3">
+                    <legend class="float-none w-auto p-3">{{@lang_currentlic}}</legend>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control username" id="username" placeholder="Username..." name="username">
+                    </div>
+                </fieldset>
                 
-            </div>
-            <div>
-                <label>Get a new license</label>
-            </div>
-            
-            LICENSE - TODO write content
-            <div><p>{{@sessionid}}</div>
-        
+                
+            </form>
         </div>
-        
         <!-- FOOTER -->
         <div>
             <include href="footer.html" />

@@ -6,18 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="The SimRacing Management">
         <meta name="author" content="Francisco Costa">
-        <meta name="application-name" content="<?= ($myappname) ?> <?= ($myappversion) ?>">
-        <title><?= ($myappname) ?> <?= ($myappversion) ?></title>
+        <meta name="application-name" content="<?= ($lang_myappname) ?> <?= ($lang_myappversion) ?>">
+        <title><?= ($lang_myappname) ?> <?= ($lang_myappversion) ?></title>
 
         <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
-        <link href="<?= ($BASE) ?>/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="<?= ($BASE) ?>/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <link href="/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
         <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
-        <link href="<?= ($BASE) ?>/styles/fontawesome/css/fontawesome.css" rel="stylesheet">
-        <link href="<?= ($BASE) ?>/styles/fontawesome/css/brands.css" rel="stylesheet">
-        <link href="<?= ($BASE) ?>/styles/fontawesome/css/solid.css" rel="stylesheet">
+        <link href="/styles/fontawesome/css/fontawesome.css" rel="stylesheet">
+        <link href="/styles/fontawesome/css/brands.css" rel="stylesheet">
+        <link href="/styles/fontawesome/css/solid.css" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {
@@ -81,43 +81,43 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><?= ($signup) ?></h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><?= ($lang_signup) ?></h3></div>
                                     <div class="card-body">
                                         <form id="registrationform" name="registration_form" action="dosignup" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmail"><?= ($email) ?></label>
+                                                <label class="small mb-1" for="inputEmail"><?= ($lang_email) ?></label>
                                                 <input onblur="checkEmail()" class="form-control py-4" id="inputEmail" name="email" type="email" required placeholder="Enter email address" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword"><?= ($password) ?></label>
+                                                <label class="small mb-1" for="inputPassword"><?= ($lang_password) ?></label>
                                                 <input class="form-control py-4" id="inputPassword" name="password" type="password" required placeholder="Enter password" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputConfirmPassword"><?= ($confirmpassword) ?></label>
-                                                <input class="form-control py-4" id="inputConfirmPassword" type="password" required placeholder="Repeat password" />
+                                                <label class="small mb-1" for="inputConfirmPassword"><?= ($lang_confirmpassword) ?></label>
+                                                <input onblur="return Validate()" class="form-control py-4" id="inputConfirmPassword" type="password" required placeholder="Repeat password" />
                                             </div> 
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputFirstName"><?= ($firstname) ?></label>
+                                                <label class="small mb-1" for="inputFirstName"><?= ($lang_firstname) ?></label>
                                                 <input class="form-control py-4" id="inputFirstName" name="firstname" required />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputMiddleName"><?= ($middlename) ?></label>
+                                                <label class="small mb-1" for="inputMiddleName"><?= ($lang_middlename) ?></label>
                                                 <input class="form-control py-4" id="inputMiddleName" name="middlename" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputLastName"><?= ($lastname) ?></label>
+                                                <label class="small mb-1" for="inputLastName"><?= ($lang_lastname) ?></label>
                                                 <input class="form-control py-4" id="inputLastName" name="lastname" required/>
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputBirthDate"><?= ($birthdate) ?></label>
+                                                <label class="small mb-1" for="inputBirthDate"><?= ($lang_birthdate) ?></label>
                                                 <input class="form-control py-4" id="inputBirthDate" name="birthdate" required type="date" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="fileToUpload"><?= ($photo) ?> .png .jpg</label>
+                                                <label class="small mb-1" for="fileToUpload"><?= ($lang_photo) ?> .png .jpg</label>
                                                 <input class="form-control py-4" accept=".png,.jpg,." type="file" id="imageToUpload" name="imagetoupload"/>
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputNationality"><?= ($nationality) ?></label>
+                                                <label class="small mb-1" for="inputNationality"><?= ($lang_nationality) ?></label>
                                                 <select class="form-control py-4" id="inputNationality" name="nationality">
                                                     <option value="AF">Afghanistan</option>
                                                     <option value="AX">Åland Islands</option>
@@ -371,7 +371,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button type="submit" class="btn btn-primary" id="submitButton" onclick="return Validate()"><?= ($save) ?></button>
+                                                <button type="submit" class="btn btn-primary" id="submitButton" onclick="return Validate()"><?= ($lang_save) ?></button>
                                             </div>
                                         </form>
                                     </div>
@@ -388,9 +388,9 @@
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Sim Racing World</div>
                             <div>
-                                <a href="#"><?= ($privacy) ?></a>
+                                <a href="#"><?= ($lang_privacy) ?></a>
                                 &middot;
-                                <a href="#"><?= ($termsconditions) ?></a>
+                                <a href="#"><?= ($lang_termsconditions) ?></a>
                             </div>
                         </div>
                     </div>

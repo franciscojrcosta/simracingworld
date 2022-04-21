@@ -52,7 +52,7 @@ class SignupModel extends Model {
         $this->registrationdate = date("Y-m-d");
         $this->nationality = filter_input(INPUT_POST, 'nationality');
         $this->flag = strtolower($this->nationality).".png";
-        $this->photo = "generic.png";
+        $this->photo = "generic.jpg";
         $this->active = false;
         $this->activationkey = $this->authmodel->generateActivationKey(); /*Generates activation key */
         $this->password = $this->authmodel->encryptPassword($this->password); /*Encrypts the password */

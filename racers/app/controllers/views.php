@@ -73,7 +73,7 @@ class Views extends Controller {
         if ($this->checkSession() == false) {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
-            echo 'LICENSAS';
+            echo $this->template->render('licences.html');
         }
     }
 
