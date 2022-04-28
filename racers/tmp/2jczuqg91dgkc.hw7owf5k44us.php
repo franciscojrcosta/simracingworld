@@ -62,14 +62,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <div class="container py-3">
             <div class="row align-items-start">
                 <div class="col">
-                    <image src="<?= ($DRIVERSIMG) ?><?= ($profiledata['photo']) ?>" class="rounded" alt="driver picture">
+                    <image src="<?= ($DRIVERSIMG) ?><?= ($profiledata['photo']) ?>" class="shadow rounded p-2" alt="driver picture">
                 </div>
-                <div class="col">
+                <div class="col border border-gray">
                     <h3><?= ($profiledata['firstname']) ?> <?= ($profiledata['middlename']) ?> <?= ($profiledata['lastname']) ?></h3>
-                    <p><?= ($profiledata['nationality'])."
+                    <div><?= ($profiledata['nationality'])."
 " ?>
-                        <image src="<?= ($FLAGSIMG) ?><?= ($profiledata['flag']) ?>" class="rounded" style="width:5%; height:5%" alt="flag">
-                    </p>
+                        <image src="<?= ($FLAGSIMG) ?><?= ($profiledata['flag']) ?>" class="border border-dark rounded" style="width:5%; height:5%" alt="flag">
+                    </div>
                     <p><?= ($profiledata['email']) ?></p>
                     <p><?= ($profiledata['birthdate']) ?></p>    
                 </div>                

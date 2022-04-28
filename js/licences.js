@@ -1,7 +1,5 @@
-<?php
-
-/*
- * Copyright (C) 2021 SimRacingWorld by Francisco Costa
+/* 
+ * Copyright (C) 2022 SimRacingWorld by Francisco Costa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,27 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Description of SponsorController
- *
- * @author franc
- */
-class LicenceController extends Controller {
 
-    protected $licencemodel;
-
-    public function __construct() {
-        parent::__construct();
-        $this->licencemodel = new LicenceModel();
+function countDays(){
+    var startdate = new Date(document.getElementById('txtstartdate').value);
+    var enddate = new Date(document.getElementById('txtenddate').value);
+    var ndays;
+    if (enddate > startdate){
+        ndays = enddate.getTime() - startdate.getTime();
+        ndays = ndays / (1000*3600*24);
     }
-
-    public function listCurrentLicence() {
-        print_r($this->licencemodel->getCurrent());
-    }
-
-    public function listAvailableLicences() {
-        $licencedata = $this->licencemodel->getAvailableLicences();
-        //print_r($licencedata);
-    }
-
+    
+    alert(ndays);
 }

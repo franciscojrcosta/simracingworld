@@ -13,6 +13,14 @@ CREATE TABLE IF NOT EXISTS settings (
     PRIMARY KEY (settingsID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/* TABLE NEWS */
+CREATE TABLE IF NOT EXISTS news (
+    newsID INT NOT NULL AUTO_INCREMENT,
+    bodytext TINYTEXT,
+    ndate DATE,
+    PRIMARY KEY (newsID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 /* TABLE RACERS */
 CREATE TABLE IF NOT EXISTS racers (
     racerID INT NOT NULL AUTO_INCREMENT,
@@ -56,6 +64,35 @@ CREATE TABLE IF NOT EXISTS sponsors (
     UNIQUE (brandname)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/* TABLE TRANSACTIONS */
+CREATE TABLE IF NOT EXISTS transactions (
+    transactionID INT NOT NULL AUTO_INCREMENT,
+    tdate DATE,
+    tsender VARCHAR(254),
+    treceiver VARCHAR(254),
+    tvalue INT,
+    PRIMARY KEY (transactionID)
+) ENGINE InnoDB DEFAULT CHARSET=utf8mb4;
+
+/* TABLE LICENCES */
+CREATE TABLE IF NOT EXISTS licences (
+    licenceID INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(32),
+    dailyprice INT,
+    PRIMARY KEY(licenceID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*  TABLE LICENCECTR */ 
+CREATE TABLE IF NOT EXISTS licencectr (
+    racinglicenceID INT NOT NULL AUTO_INCREMENT,
+    licence INT,
+    licencevalue INT,
+    racer VARCHAR(254),
+    startdate DATE,
+    enddate DATE,
+    PRIMARY KEY (racinglicenceID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 /* TABLE TEAMS
 CREATE TABLE IF NOT EXISTS teams (
     teamID INT NOT NULL AUTO_INCREMENT,
@@ -75,29 +112,6 @@ CREATE TABLE IF NOT EXISTS teams (
     bankroll DECIMAL(11,2),
     active BOOLEAN,
     PRIMARY KEY (teamID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/* TABLE TRANSACTIONS
-CREATE TABLE IF NOT EXISTS trnsactions (
-    transactionID INT NOT NULL AUTO_INCREMENT,
-    origin
-
-/* TABLE LICENSES 
-CREATE TABLE IF NOT EXISTS licenses (
-    licenseID INT NOT NULL AUTO_INCREMENT,
-    description VARCHAR(32),
-    dailyprice INT,
-    PRIMARY KEY(licenseID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*  TABLE LICENSECTR 
-CREATE TABLE IF NOT EXISTS licensectr (
-    racinglicenseID INT NOT NULL AUTO_INCREMENT,
-    license INT,
-    racer VARCHAR,
-    startdate DATE,
-    enddate DATE,
-    PRIMARY KEY (racinglicenseID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* TABLE SIMULATORS 

@@ -62,7 +62,7 @@ class AuthController extends Controller {
     public function doSignup() {
         $signup = new SignupModel();
         $signup->initSignup();
-        echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
+        echo $this->template->render('activate.html');
     }
 
     /**

@@ -29,30 +29,23 @@ class LicenceModel extends Model {
 
     public function __construct() {
         parent::__construct();
-        $this->mapDbTable('racers');
-        $this->profiledata = $this->dbdata;
-        $this->email = $this->f3->get('email');
-        $this->getCurrentProfile();
-    }
-    
-    /**
-     * Get the data for the current profile by the e-mail
-     * email is set in f3 global variable email in the views.php in checkSession
-     */
-    protected function getCurrentProfile() {
-        $this->profiledata->load(array('email=?', $this->email));
-    }
-
-    protected function getOne() {
-        
-    }
-
-    protected function getXRandomly() {
-        
+        $this->mapDbTable('licences');
+        $this->licencedata = $this->dbdata;
     }
 
     protected function getCurrent() {
         
+    }
+    
+    function getAvailableLicences(){
+        $this->licencedata->load();
+        $pos = 0;
+        while($this->licencedata->dry() == FALSE){
+            $availablelicences[$pos] = ($this->licencedata->description, $this->licencedata->dailyprice);
+            $pos++;
+            $this->licencedata->next();
+        }
+        print_r($availablelicences);
     }
 
 }
