@@ -18,7 +18,7 @@
  */
 
 /**
- * Description of SponsorController
+ * Description
  *
  * @author franc
  */
@@ -35,9 +35,11 @@ class LicenceController extends Controller {
         print_r($this->licencemodel->getCurrent());
     }
 
+    //https://www.w3programmers.com/views-and-templates-of-fat-free-framework/
     public function listAvailableLicences() {
         $licencedata = $this->licencemodel->getAvailableLicences();
-        //print_r($licencedata);
+        print_r($licencedata);
+        $this->f3->set('availablelicences', array('op1', 'op2', 'op3', 'op4'));
     }
 
 }

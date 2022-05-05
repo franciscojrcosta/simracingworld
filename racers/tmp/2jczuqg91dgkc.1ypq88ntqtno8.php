@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <link href="/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
-        <script src="/js/licences.js" type="text/javascript"></script>
+        <script src="/js/dates.js" type="text/javascript"></script>
 
 
         <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
@@ -54,7 +54,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </style>
 
     </head>
-    <body>
+    <body onload="setMinMaxDate()">
 
         <!-- NAVIGATION MENU -->
         <div>
@@ -64,48 +64,64 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <!-- MAIN -->
         <div class="container">
             <form name="licence_form" id="licenceform">
-                <fieldset class="form-group border p-3">
-                    <legend class="float-none w-auto p-3"><?= ($lang_currentlic) ?></legend>
-                    <div class="form-group">
+                <!-- CURRENT LICENCE --> 
+                <fieldset class="form-group border">  
+                    <legend class="float-none w-auto p-2"><?= ($lang_currentlic) ?></legend>
+                    <div class="form-group p-2">
                         <label for="username">Username:</label>
                         <input type="text" class="form-control username" id="username" placeholder="Username..." name="username">
                     </div>
                 </fieldset>
-                <fieldset class="form-group border p-3">
-                    <legend class="float-none w-auto p-3"><?= ($lang_newlic) ?></legend>
+
+                <!-- NEW LICENCE -->
+                <fieldset class="form-group border">
+                    <legend class="float-none w-auto p-2"><?= ($lang_newlic) ?></legend>
+
+                    <!-- DATE FIELDS -->
                     <div class="row align-items-start">
-                        <div class="col-md-auto">    
-                            <label for="selectlicence" class="form-label"><?= ($lang_licencetype) ?></label>
-                            <select id="selectlicence" class="form-control">
-                                <option>teste</option>
-                                <option>teste1</option>
-                            </select>
-                        </div>
-                        <div class="col-md-auto">
+                        <div class="col-md-auto p-3">
                             <label for="txtstartdate" class="form-label"><?= ($lang_startdate) ?></label>
-                            <input id="txtstartdate" class="form-control" type="date" />
+                            <input id="txtstartdate" class="form-control" type="date" required>
+                        </div>
+                        <div class="col-md-auto p-3">
+                            <label for="txtenddate" class="form-label"><?= ($lang_enddate) ?></label>
+                            <input id="txtenddate" class="form-control" type="date" required>
+                        </div>
+                    </div>
+                    <!-- END DATE FIELDS -->
+
+                    <!-- LICENCE TYPE RADIO SELECT -->
+                    <div class="row m-2">
+                        <label class="p-2"><?= ($lang_licencetype) ?></label>
+                        <?php foreach (($availablelicences?:[]) as $licence): ?>
+                            <div class="form-check" required>
+                                <input class="form-check-input" type="radio" name="selectlicence" id="<?= ($licence) ?>" value="<?= ($licence) ?>">
+                                <label class="form-check-label" for="<?= ($licence) ?>">
+                                    <?= ($licence)."
+" ?>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- END LICENCE TYPE RADIO SELECT -->
+
+                    <!-- VALUE CONFIRMATION AND SUBMIT BUTTON-->
+                    <div class="row align-items-start">
+                        <div class="col-md-auto">
+                            <input class="form-control m-2" type="text" value="FFF" readonly>
                         </div>
                         <div class="col-md-auto">
-                            <label for="txtenddate" class="form-label"><?= ($lang_enddate) ?></label>
-                            <input id="txtenddate" class="form-control" type="date" />
+                            <button type="submit" class="form-control btn btn-primary"
+                                 onclick="countDays(document.getElementById('txtstartdate').value,
+                                                 document.getElementById('txtenddate').value)">
+                                <?= ($lang_submit)."
+" ?>
+                            </button>
                         </div>
                     </div>
-                    <div class="row align-items-start">
-                        <div class="col-md-auto py-3">
-                        valor em creditos
-                        </div>
-                        <div class="col-md-auto py-3">
-                            <div class="form-control btn btn-primary" onclick="countDays()">teste</div>
-                            <!-- <button class="form-control btn btn-primary"
-                                    onclick="countDays()">enviar</button> -->
-                        </div>
-                    </div>
+                    <!-- END OF VALUE CONFIRMATION AND SUBMIT BUTTON-->
                 </fieldset>
             </form>
-        </div>
-        <!-- FOOTER -->
-        <div>
-            <?php echo $this->render('footer.html',NULL,get_defined_vars(),0); ?>
         </div>
     </body>
 </html>
