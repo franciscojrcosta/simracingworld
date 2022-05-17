@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <link href="/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
-        <script src="/js/dates.js" type="text/javascript"></script>
+        <script src="/js/licences.js" type="text/javascript"></script>
 
 
         <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
@@ -54,8 +54,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </style>
 
     </head>
-    <body onload="setMinMaxDate()">
 
+    <body onload="setStartDate()">
         <!-- NAVIGATION MENU -->
         <div>
             <?php echo $this->render('nav.html',NULL,get_defined_vars(),0); ?>
@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <!-- MAIN -->
         <div class="container">
-            <form name="licence_form" id="licenceform">
+            <form name="licence_form" id="licenceform" action="buylicence" method="POST">
                 <!-- CURRENT LICENCE --> 
                 <fieldset class="form-group border">  
                     <legend class="float-none w-auto p-2"><?= ($lang_currentlic) ?></legend>
@@ -78,27 +78,36 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     <legend class="float-none w-auto p-2"><?= ($lang_newlic) ?></legend>
 
                     <!-- DATE FIELDS -->
-                    <div class="row align-items-start">
+                    <div class="row align-items-start m-2">
                         <div class="col-md-auto p-3">
                             <label for="txtstartdate" class="form-label"><?= ($lang_startdate) ?></label>
-                            <input id="txtstartdate" class="form-control" type="date" required>
+                            <input class="form-control" id="txtstartdate" type="date" onchange="calculateTotalPrice()" onblur="setEndDate()" required>
                         </div>
                         <div class="col-md-auto p-3">
                             <label for="txtenddate" class="form-label"><?= ($lang_enddate) ?></label>
-                            <input id="txtenddate" class="form-control" type="date" required>
+                            <input id="txtenddate" class="form-control" type="date" onchange="calculateTotalPrice()" required>
                         </div>
                     </div>
                     <!-- END DATE FIELDS -->
 
+                    <!-- <?= ($availablelicences[0]['licencetype']) ?> <?= ($availablelicences[0]['licenceprice'])."
+" ?>
+                    <?php foreach (($availablelicences?:[]) as $key=>$licences): ?>
+                        <?= ($key)."
+" ?>
+                        <?php foreach (($licences?:[]) as $licence): ?>
+                            <strong> <?= ($licence) ?> </strong>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?> -->
+
                     <!-- LICENCE TYPE RADIO SELECT -->
                     <div class="row m-2">
                         <label class="p-2"><?= ($lang_licencetype) ?></label>
-                        <?php foreach (($availablelicences?:[]) as $licence): ?>
-                            <div class="form-check" required>
-                                <input class="form-check-input" type="radio" name="selectlicence" id="<?= ($licence) ?>" value="<?= ($licence) ?>">
-                                <label class="form-check-label" for="<?= ($licence) ?>">
-                                    <?= ($licence)."
-" ?>
+                        <?php foreach (($availablelicences?:[]) as $columns): ?>
+                            <div class="form-check" onclick="calculateTotalPrice()">
+                                <input class="form-check-input" type="radio" name="lstlicences" id="<?= ($columns['licencetype']) ?>" value="<?= ($columns['licenceprice']) ?>" required>
+                                <label class="form-check-label" for="<?= ($columns['licencetype']) ?>">
+                                    <?= ($columns['licencetype']) ?> - <?= ($columns['licenceprice']) ?> CR&dollar;
                                 </label>
                             </div>
                         <?php endforeach; ?>
@@ -106,14 +115,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     <!-- END LICENCE TYPE RADIO SELECT -->
 
                     <!-- VALUE CONFIRMATION AND SUBMIT BUTTON-->
-                    <div class="row align-items-start">
-                        <div class="col-md-auto">
-                            <input class="form-control m-2" type="text" value="FFF" readonly>
+                    <div class="row align-items-start m-2">
+                        <div class="col-md-auto p-2">
+                            <h5><label class="form-control-label" for="txtoutput"><?= ($lang_total) ?></label></h5>
                         </div>
-                        <div class="col-md-auto">
-                            <button type="submit" class="form-control btn btn-primary"
-                                 onclick="countDays(document.getElementById('txtstartdate').value,
-                                                 document.getElementById('txtenddate').value)">
+                        <div class="col-md-auto p-2">
+                            <input class="form-control" name="txtoutput_form" id="txtoutput" type="text" readonly="true">
+                        </div>
+                        <div class="col-md-auto p-2">
+                            <button id="btnsubmit" class="form-control btn btn-primary">
                                 <?= ($lang_submit)."
 " ?>
                             </button>

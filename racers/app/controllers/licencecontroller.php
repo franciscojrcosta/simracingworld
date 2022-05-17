@@ -38,8 +38,12 @@ class LicenceController extends Controller {
     //https://www.w3programmers.com/views-and-templates-of-fat-free-framework/
     public function listAvailableLicences() {
         $licencedata = $this->licencemodel->getAvailableLicences();
-        print_r($licencedata);
-        $this->f3->set('availablelicences', array('op1', 'op2', 'op3', 'op4'));
+        $this->f3->set('availablelicences', $licencedata);
+    }
+    
+    public function buyLicence(){
+        $teste = filter_input(INPUT_POST, 'txtoutput_form');
+        echo 'Porreta - '.$teste;
     }
 
 }

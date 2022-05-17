@@ -89,11 +89,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     <p><?= ($profiledata['birthdate']) ?></p>    
                 </div>                
             </div>    
-
-        </div>
-        <!-- FOOTER -->
-        <div>
-            <?php echo $this->render('footer.html',NULL,get_defined_vars(),0); ?> 
         </div>
     </body>
 </html>

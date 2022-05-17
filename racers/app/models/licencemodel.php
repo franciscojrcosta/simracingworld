@@ -42,7 +42,9 @@ class LicenceModel extends Model {
         $this->licencedata->load();
         $pos = 0;
         while($this->licencedata->dry() == FALSE){
-            $availablelicences[$pos] = array('licencetype' => $this->licencedata->description, 'licenceprice' => $this->licencedata->dailyprice);
+            $availablelicences[$pos] = array(
+                'licencetype' => $this->licencedata->description,
+                'licenceprice' => $this->licencedata->dailyprice);
             $pos++;
             $this->licencedata->next();
         }
