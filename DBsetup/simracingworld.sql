@@ -1,29 +1,29 @@
 CREATE TABLE IF NOT EXISTS settings (
-    settingsID INT NOT NULL AUTO_INCREMENT,
-    racersponsormaxnum INT,
-    racersponsorminval INT,
-    racersponsormaxval INT,
-    racersponsorminday INT,
-    racersponsormaxday INT,
-    teamsponsormaxnum INT,
-    teamsponsorminval INT,
-    teamsponsormaxval INT,
-    teamsponsorminday INT,
-    teamsponsormaxday INT,
+    settingsID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    racersponsormaxnum INT UNSIGNED,
+    racersponsorminval INT UNSIGNED,
+    racersponsormaxval INT UNSIGNED,
+    racersponsorminday INT UNSIGNED,
+    racersponsormaxday INT UNSIGNED,
+    teamsponsormaxnum INT UNSIGNED,
+    teamsponsorminval INT UNSIGNED,
+    teamsponsormaxval INT UNSIGNED,
+    teamsponsorminday INT UNSIGNED,
+    teamsponsormaxday INT UNSIGNED,
     PRIMARY KEY (settingsID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* TABLE NEWS */
 CREATE TABLE IF NOT EXISTS news (
-    newsID INT NOT NULL AUTO_INCREMENT,
+    newsID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     bodytext TINYTEXT,
     ndate DATE,
     PRIMARY KEY (newsID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* TABLE RACERS */
-CREATE TABLE IF NOT EXISTS racers (
-    racerID INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS pilots (
+    pilotID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     email VARCHAR(254),
     password VARCHAR(254),
     firstname VARCHAR(254),
@@ -36,47 +36,47 @@ CREATE TABLE IF NOT EXISTS racers (
     flag VARCHAR(254),
     photo VARCHAR(254),
     simulators VARCHAR(254),
-    sponsorslots INT,
+    sponsorslots TINYINT,
     bankroll DECIMAL(11,2),
-    skill INT, /* overal skill from 0 to 10 */
-    attacking INT, /* hability to attack and overtake */
-    defending INT, /* hability to defend position */
-    consistency INT, /* how consistent he drives, no accidents */
-    teamplayer INT, /* relationship with team members and order compliance */
-    knowledge INT, /* technical knowledge on car setup */
+    skill TINYINT, /* overal skill from 0 to 10 */
+    attacking TINYINT, /* hability to attack and overtake */
+    defending TINYINT, /* hability to defend position */
+    consistency TINYINT, /* how consistent he drives, no accidents */
+    teamplayer TINYINT, /* relationship with team members and order compliance */
+    knowledge TINYINT, /* technical knowledge on car setup */
     evalcounter INT,
     rankingpoints INT,
     activationkey VARCHAR(32),
     active BOOLEAN,
     UNIQUE KEY (email),
-    PRIMARY KEY (racerID)
+    PRIMARY KEY (pilotID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* TABLE SPONSOSRS */
 CREATE TABLE IF NOT EXISTS sponsors (
-    sponsorID INT NOT NULL AUTO_INCREMENT,
+    sponsorID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     brandname VARCHAR(254),
     logo VARCHAR(254),
-    totalvalue INT,
+    totalvalue DECIMAL(11,2),
     ncontracts INT,
-    avgvalue INT as (totalvalue / ncontracts),
+    avgvalue DECIMAL(11,2) as (totalvalue / ncontracts),
     PRIMARY KEY (sponsorID),
     UNIQUE (brandname)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* TABLE TRANSACTIONS */
 CREATE TABLE IF NOT EXISTS transactions (
-    transactionID INT NOT NULL AUTO_INCREMENT,
+    transactionID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     tdate DATE,
     tsender VARCHAR(254),
     treceiver VARCHAR(254),
-    tvalue INT,
+    tvalue DECIMAL(11,2),
     PRIMARY KEY (transactionID)
 ) ENGINE InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* TABLE LICENCES */
 CREATE TABLE IF NOT EXISTS licences (
-    licenceID INT NOT NULL AUTO_INCREMENT,
+    licenceID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     description VARCHAR(32),
     dailyprice INT,
     PRIMARY KEY(licenceID)
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS licences (
 
 /*  TABLE LICENCECTR */ 
 CREATE TABLE IF NOT EXISTS licencectr (
-    racinglicenceID INT NOT NULL AUTO_INCREMENT,
+    racinglicenceID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     licence INT,
     licencevalue INT,
     racer VARCHAR(254),
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS licencectr (
 
 /* TABLE TEAMS
 CREATE TABLE IF NOT EXISTS teams (
-    teamID INT NOT NULL AUTO_INCREMENT,
+    teamID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     email VARCHAR(254),
     password VARCHAR(254),
     teamname VARCHAR(254),
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS teams (
     bankroll DECIMAL(11,2),
     active BOOLEAN,
     PRIMARY KEY (teamID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  AUTO_INCREMENT=512000001;
 
 /* TABLE SIMULATORS 
 CREATE TABLE IF NOT EXISTS simulators (
