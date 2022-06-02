@@ -46,7 +46,8 @@ class AuthModel extends Model {
         $siteroot = $this->f3->get('SITEROOT');
         $message = $this->f3->get('ACTIVATIONEMAIL');
         $link = '<a href=' . $siteroot . '/app_pilots/activate/' . $email . '/' . $key . '>Click here to activate account!</a>';
-        $smtp->send($message . '<center><h3>' . $link . '</h3></center>' . '<center><h3>' . $key . '</h3></center>');
+        $completemessage = $message . '<center><h3>' . $link . '</h3></center>' . '<center><h3>' . $key . '</h3></center>'; 
+        $smtp->send('teste');
     }
 
     /**
