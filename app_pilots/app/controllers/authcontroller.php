@@ -6,11 +6,8 @@
  */
 class AuthController extends Controller {
 
-    protected $authmodel;
-
     public function __construct() {
         parent::__construct();
-        $this->authmodel = new AuthModel();
     }
 
     /**

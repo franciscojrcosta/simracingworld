@@ -16,11 +16,15 @@ class LicenceModel extends Model {
         $this->licencedata = $this->dbdata;
     }
 
-    protected function getCurrent() {
+    protected function readCurrentLicence() {
         
     }
     
-    function getAvailableLicences(){
+    protected function createLicence(){
+        
+    } 
+    
+    function readAvailableLicences(){
         $this->licencedata->load();
         $pos = 0;
         while($this->licencedata->dry() == FALSE){

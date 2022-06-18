@@ -39,6 +39,9 @@ function formatDateUTC(daystoadd) {
     let day = appdate.getUTCDate(); //getUTCDate  returns the day number
     let month = appdate.getUTCMonth() + 1; //getUTCMonth returns first month as Zer0
     let year = appdate.getUTCFullYear();
+    if (day < 10){ //adding leading zero to day
+        day = '0' + day;
+    }
     if (month < 10) { //adding leading zero to month
         month = '0' + month;
     }

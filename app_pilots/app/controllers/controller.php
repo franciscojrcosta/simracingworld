@@ -8,12 +8,13 @@ class Controller {
 
     protected $f3;          //! fat-free framework instance
     protected $template;    //! template instance
-    protected $authmodel;
-    protected $validsession;
+    protected $authmodel;   //! authmodel instance
+    protected $validsession;//! true if session exists
 
     /**
      * Initialize Template object
      * Initialize Framework object
+     * Initialize AuthModel object
      */
     public function __construct() {
         $f3 = Base::instance();
@@ -24,7 +25,8 @@ class Controller {
 
     /**
      * starts the login process
-     * sets session id, user and session type
+     * sets session id
+     * if login is sucessfull shows main page dashboard.html
      */
     public function doLogin() {
         if ($this->authmodel->login() == true) {
@@ -36,20 +38,8 @@ class Controller {
             $this->f3->set('username', $_SESSION['user']);
             $this->f3->set('email', $_SESSION['email']);
             $this->f3->set('timedate', date('d-m-Y H:m:s'));
-            echo $this->template->render('dashboard.html'); //open dashboard
+            echo $this->template->render('dashboard.html'); //! open dashboard
         }
-    }
-    
-    /**
-     * 
-     * @param string $fileToUpload
-     * @param string $filetype
-     * @param string $destination
-     */
-    public function doUpload($fileToUpload, $filetype, $destination){
-        print_r ($fileToUpload);
-        echo $filetype;
-        echo $destination;
     }
 
 }

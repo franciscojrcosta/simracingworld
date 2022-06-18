@@ -18,7 +18,7 @@ class AuthModel extends Model {
      * Generates the unique id for the activation key
      * @return string Sactivationkey
      */
-    public function generateActivationKey() {
+    public function createActivationKey() {
         $this->activationkey = uniqid();
         return $this->activationkey;
     }
@@ -47,7 +47,8 @@ class AuthModel extends Model {
         $message = $this->f3->get('ACTIVATIONEMAIL');
         $link = '<a href=' . $siteroot . '/app_pilots/activate/' . $email . '/' . $key . '>Click here to activate account!</a>';
         $completemessage = $message . '<center><h3>' . $link . '</h3></center>' . '<center><h3>' . $key . '</h3></center>'; 
-        $smtp->send($completemessage);
+        //$smtp->send($completemessage);
+        //echo '<pre>'.$smtp->log().'</pre>';
     }
 
     /**
@@ -118,7 +119,7 @@ class AuthModel extends Model {
      * generates a random string to be used as recovery password
      * @return string
      */
-    public function randomString() {
+    public function createRandomString() {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
         for ($i = 0; $i < 10; $i++) {
@@ -151,7 +152,7 @@ class AuthModel extends Model {
         $siteroot = $this->f3->get('SITEROOT');
         $message = $this->f3->get('PASSRESETEMAIL');
         $smtp->send($message . '<center><h3>' . $password . '</h3></center>');
-        //echo '<pre>'.$smtp->log().'</pre>';
+        echo '<pre>'.$smtp->log().'</pre>';
     }
 
 }

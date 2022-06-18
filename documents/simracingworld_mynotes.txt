@@ -7,3 +7,9 @@ If you don't use any visibility modifier, the property / method will be public.
 
 index.php
  - remover o código referente ao error reporting antes de publicar
+
+
+Create  -   add
+Read    -   get
+Update  -   change
+Delete  -   remove

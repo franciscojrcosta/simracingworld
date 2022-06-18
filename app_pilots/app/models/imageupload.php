@@ -11,13 +11,12 @@ trait ImageUpload {
     private string $destinationfolder;
     private string $filename;
     private string $filetype;
-    private string $fileextension;
     private string $newfilename;
     private string $path; //! complete path for the file upload including the filename
     private bool $filesizeok;
     private bool $filetypeok;
     private int $filesize = 4194304; //! maximum file size in bytes
-    
+
     /**
      * Initializes all functions to upload a file
      * 
@@ -51,11 +50,19 @@ trait ImageUpload {
             $newwidth = ceil(200 / $ratio);
             $newheight = 200;
         }
-        
-        //! imagecopyresampled($dst_image, $src_image, $newheight, $newwidth, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-        echo 'Medidas - largura, altura ' . $this->width . ' x ' . $this->height;
-        echo 'ratio' . $ratio . 'Novas medidas ' . $newwidth . ' x ' . $newheight;
-        return;
+        $dstimage = imagecreatetruecolor($newwidth, $newheight,);
+        if ($this->filetype == 'image/jpg') {
+            $image = imagecreatefromjpeg($this->path);
+            imagecopyresampled($dstimage, $image, 0, 0, 0, 0, $newwidth, $newheight, $this->width, $this->height);
+            imagejpeg($dstimage, $this->path, 100);
+            return;
+        }
+        if ($this->filetype == 'image/png') {
+            $image = imagecreatefrompng($this->path);
+            imagecopyresampled($dstimage, $image, 0, 0, 0, 0, $newwidth, $newheight, $this->width, $this->height);
+            imagepng($dstimage, $this->path, 0);
+            return;
+        }
     }
 
     /**

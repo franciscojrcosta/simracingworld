@@ -20,13 +20,13 @@ class SponsorModel extends Model {
         parent::__construct();
         $this->mapDbTable('sponsors');
         $this->sponsordata = $this->dbdata;
-        $this->getAll();    
+        $this->readAll();    
     }
 
     /**
      * Loads all sponsor data in to sponsordata
      */
-    protected function getAll() {
+    protected function readAll() {
         $this->sponsordata->load();
         $pos = 0;
         while ($this->sponsordata->dry() == false) {
@@ -38,15 +38,11 @@ class SponsorModel extends Model {
         }
     }
 
-    protected function getOne() {
-        
-    }
-
-    protected function getXRandomly(){
+    protected function readOne() {
         
     }
     
-    protected function getCurrent(){
+    protected function readCurrent(){
         
     }
 }

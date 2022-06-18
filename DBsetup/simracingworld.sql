@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS licencectr (
     racinglicenceID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     licence INT,
     licencevalue INT,
-    racer VARCHAR(254),
+    pilot VARCHAR(254),
     startdate DATE,
     enddate DATE,
     PRIMARY KEY (racinglicenceID)

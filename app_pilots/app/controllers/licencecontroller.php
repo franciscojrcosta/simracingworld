@@ -13,13 +13,13 @@ class LicenceController extends Controller {
         $this->licencemodel = new LicenceModel();
     }
 
-    public function listCurrentLicence() {
-        print_r($this->licencemodel->getCurrent());
+    public function getCurrentLicence() {
+        print_r($this->licencemodel->readCurrent());
     }
 
     //https://www.w3programmers.com/views-and-templates-of-fat-free-framework/
-    public function listAvailableLicences() {
-        $licencedata = $this->licencemodel->getAvailableLicences();
+    public function getAvailableLicences() {
+        $licencedata = $this->licencemodel->readAvailableLicences();
         $this->f3->set('availablelicences', $licencedata);
     }
     

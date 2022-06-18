@@ -62,7 +62,7 @@ class Views extends Controller {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
             $this->licencecontroller = new LicenceController;
-            $this->licencecontroller->listAvailableLicences();
+            $this->licencecontroller->getAvailableLicences();
             echo $this->template->render('licences.html');
         }
     }
@@ -80,7 +80,7 @@ class Views extends Controller {
             echo '<meta http-equiv="refresh" content="0; URL=http://' . $this->f3->get('SITEROOT') . '"/>';
         } else {
             $this->sponsorcontroller = new SponsorController;
-            $this->sponsorcontroller->listAll();
+            $this->sponsorcontroller->getAll();
             //echo $this->template->render('sponsors.html');
         }
     }

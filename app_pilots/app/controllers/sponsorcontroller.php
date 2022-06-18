@@ -17,19 +17,19 @@ class SponsorController extends Controller {
         echo $this->template->render('pilots/sponsor.html');
     }
 
-    public function listAll() {
+    public function getAll() {
         print_r($this->sponsormodel->sponsorlist);
     }
 
-    public function listOne() {
+    public function getOne() {
         
     }
 
-    public function listCurrentSponsor() {
+    public function getCurrentSponsor() {
         
     }
 
-    public function listRandomSponsor() {
+    public function getRandomSponsor() {
         
     }
 

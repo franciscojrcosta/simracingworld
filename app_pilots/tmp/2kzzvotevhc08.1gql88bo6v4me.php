@@ -10,8 +10,8 @@
 
         <!-- Bootstrap core CSS -->
         <!-- Bootstrap CSS -->
-        <link href="/styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="/styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <link href="../styles/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="../styles/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
         <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
         <link href="/styles/fontawesome/css/fontawesome.css" rel="stylesheet">

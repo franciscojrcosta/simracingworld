@@ -18,14 +18,14 @@ class SignupModel extends Model {
     }
 
     public function initSignup() {
-        /** $destination = $this->f3->get('PILOTSIMG');
+        $destination = $this->f3->get('PILOTSIMG');
         if ( $_FILES['fileToUpload']['name'] <> NULL) { //! reads from signup form the file to upload 
             $this->filename = $this->initUpload($_FILES['fileToUpload'],$destination);
         } else {
             $this->filename = 'generic.jpg'; //! if no file is loaded the generic.jpg is used 
-        } **/
+        }
         $this->initData();
-        $this->register();
+        $this->createPilot();
         $this->authmodel->sendActivationKey($this->email, $this->activationkey);
     }
 
@@ -44,16 +44,16 @@ class SignupModel extends Model {
         $this->registrationdate = date("Y-m-d");
         $this->nationality = filter_input(INPUT_POST, 'txtNationality');
         $this->flag = strtolower($this->nationality) . ".png";
-        //$this->photo = $this->filename;
+        $this->photo = $this->filename;
         $this->active = false;
-        $this->activationkey = $this->authmodel->generateActivationKey(); /* Generates activation key */
+        $this->activationkey = $this->authmodel->createActivationKey(); /* Generates activation key */
         $this->password = $this->authmodel->encryptPassword($this->password); /* Encrypts the password */
     }
 
     /**
      * Saves the data
      */
-    protected function register() {
+    protected function createPilot() {
         $this->dbdata->email = $this->email;
         $this->dbdata->password = $this->password;
         $this->dbdata->firstname = $this->firstname;
@@ -63,7 +63,7 @@ class SignupModel extends Model {
         $this->dbdata->registrationdate = $this->registrationdate;
         $this->dbdata->nationality = $this->nationality;
         $this->dbdata->flag = $this->flag;
-        //$this->dbdata->photo = $this->photo;
+        $this->dbdata->photo = $this->photo;
         $this->dbdata->active = $this->active;
         $this->dbdata->activationkey = $this->activationkey;
         $this->dbdata->save(); //saves all the data to db

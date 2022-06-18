@@ -47,7 +47,7 @@ class Model {
     /**
      * gets data from database 
      */
-    public function getByEmail($email) {
+    public function readByEmail($email) {
         $this->dbdata->load(array('email=?', $email));
         if ($this->dbdata->dry()) {
             $this->dbdata = false;
@@ -71,7 +71,7 @@ class Model {
      * Save the new encrypted password in to database
      * @param type $password
      */
-    public function setNewPassword($password) {  
+    public function createNewPassword($password) {  
         $password = $this->encryptPassword($password);
         $this->dbdata->password = $password;
         $this->dbdata->save();
